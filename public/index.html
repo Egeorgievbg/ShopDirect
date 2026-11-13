@@ -14,23 +14,32 @@
   <link rel="stylesheet" href="/scroll-story.css">
   <link rel="stylesheet" href="/experience-v3.css">
   <link rel="stylesheet" href="/hero-depth.css">
+  <link rel="stylesheet" href="/experience-v4.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="/premium.js" defer></script>
   <script src="/scroll-story.js" defer></script>
   <script src="/app.js" defer></script>
   <script src="/experience-v3.js" defer></script>
-  <script src="/hero-depth.js" defer></script>
+  <!-- Motion controlled only by experience-v4.js. -->
+  <script src="/experience-v4.js" defer></script>
 </head>
 <body>
   <div class="academy-loader" id="academy-loader" aria-hidden="true">
     <div class="loader-aura"></div>
-    <div class="loader-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
-    <img class="loader-icon" src="/visuals/floating/academy-seal.png" alt="" width="148" height="148" decoding="async" fetchpriority="high">
-    <span class="loader-university">СТОПАНСКА АКАДЕМИЯ „Д. А. ЦЕНОВ“ · СВИЩОВ</span>
-    <strong class="loader-title">ИЛИЯНА ЦАНОВА <em>/ P3.1</em></strong>
-    <div class="loader-progress"><span id="loader-track"></span></div>
-    <div class="loader-bottom"><span>INITIALIZING RESEARCH EXPERIENCE</span><b id="loader-percent">0%</b></div>
+    <div class="loader-composition">
+      <span class="loader-kicker">ACADEMIC RESEARCH / 2026</span>
+      <div class="loader-emblem">
+        <div class="loader-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img class="loader-icon" src="/visuals/floating/academy-seal.png" alt="" width="148" height="148" decoding="async" fetchpriority="high">
+        <span class="loader-glint" aria-hidden="true"></span>
+      </div>
+      <span class="loader-university">СТОПАНСКА АКАДЕМИЯ „Д. А. ЦЕНОВ“ · СВИЩОВ</span>
+      <strong class="loader-title">ИЛИЯНА ЦАНОВА <em>/ P3.1</em></strong>
+      <span class="loader-subtitle">Интерактивно маркетингово изследване</span>
+      <div class="loader-progress"><span id="loader-track"></span></div>
+      <div class="loader-bottom"><span>ЗАРЕЖДАНЕ НА ИЗСЛЕДВАНЕТО</span><b id="loader-percent">0%</b></div>
+    </div>
   </div>
   <div class="read-progress" id="read-progress" aria-hidden="true"><span></span></div>
   <a href="#main" class="skip-link">Към съдържанието</a>
@@ -102,12 +111,11 @@
             <circle cx="526" cy="280" r="7" fill="#d8ff93"/><circle cx="526" cy="280" r="19" stroke="#d8ff93" fill="none" opacity=".4"/>
           </svg>
           <div class="hero-orbit-assets" aria-hidden="true">
-            <img class="float-asset float-python" src="/visuals/floating/python.png" width="128" height="128" loading="lazy" decoding="async" alt="">
-            <img class="float-asset float-vscode" src="/visuals/floating/vscode.png" width="137" height="128" loading="lazy" decoding="async" alt="">
-            <img class="float-asset float-analytics" src="/visuals/floating/analytics.png" width="175" height="115" loading="lazy" decoding="async" alt="">
-
-            <img class="float-asset float-campus" src="/visuals/floating/academy-building.png" width="172" height="134" loading="lazy" decoding="async" alt="">
-
+            <span class="float-shell float-python"><img class="float-asset" src="/visuals/floating/python.png" width="128" height="128" loading="lazy" decoding="async" alt=""></span>
+            <span class="float-shell float-vscode"><img class="float-asset" src="/visuals/floating/vscode.png" width="137" height="128" loading="lazy" decoding="async" alt=""></span>
+            <span class="float-shell float-analytics"><img class="float-asset" src="/visuals/floating/analytics.png" width="175" height="115" loading="lazy" decoding="async" alt=""></span>
+            <span class="float-shell float-editor"><img class="float-asset" src="/visuals/floating/code-editor.png" width="145" height="105" loading="lazy" decoding="async" alt=""></span>
+            <span class="float-shell float-seal"><img class="float-asset" src="/visuals/floating/academy-seal.png" width="102" height="106" loading="lazy" decoding="async" alt=""></span>
           </div>
           <div class="orbit-caption"><span class="live-pulse"></span> Python / scikit-learn · 2 модела</div>
         </div>
@@ -157,7 +165,7 @@
         <div class="research-orbit research-orbit-two"></div>
         <img class="research-float rf-python" src="/visuals/floating/python.png" alt="" width="150" height="145" loading="lazy" decoding="async">
         <img class="research-float rf-editor" src="/visuals/floating/code-editor.png" alt="" width="160" height="114" loading="lazy" decoding="async">
-        <img class="research-float rf-university" src="/visuals/floating/university-icon.png" alt="" width="150" height="103" loading="lazy" decoding="async">
+
       </div>
       <div class="research-intro wrap"><div class="section-meta"><span>RESEARCH / EXECUTION</span><span>PYTHON, РЕАЛНО ИЗПЪЛНЕНИЕ</span></div><div class="research-intro-row"><h2>Изследването,<br><em>стъпка по стъпка.</em></h2><p>Всяка глава съдържа аргументация, действителния Python код и отделен бутон за изпълнение. Всички резултати се изчисляват от вградения CSV на сървъра — без ръчно качване на файл.</p></div></div>
       <div class="reading-rail" aria-label="Навигация по глави">
