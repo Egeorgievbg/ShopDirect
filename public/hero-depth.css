@@ -1,0 +1,73 @@
+/* Focused floating objects around Iliyana. No change to ML data or statistics. */
+.cover .hero-orbit-assets{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:visible;isolation:isolate}
+.cover .float-asset{
+  position:absolute;
+  height:auto;
+  max-width:none;
+  object-fit:contain;
+  opacity:0; /* GSAP reveals only after layout is ready */
+  transform-origin:50% 56%;
+  filter:drop-shadow(0 9px 15px #120728a6) drop-shadow(0 0 13px #9964e955);
+  /* CSS translate runs independently of GSAP transforms. */
+  translate:0 0;
+  animation:none!important;
+  will-change:transform,opacity,translate;
+  backface-visibility:hidden;
+}
+/* Four distinct small elements in the portrait's peripheral negative space. */
+.cover .float-python{--asset-width:77px;top:18%;right:2%}
+.cover .float-vscode{--asset-width:73px;top:6%;left:5%}
+.cover .float-analytics{--asset-width:103px;bottom:28%;left:0}
+.cover .float-campus{--asset-width:99px;top:42%;right:-3%}
+.cover .float-python,.cover .float-analytics{animation:sdSwayA 6.4s ease-in-out infinite!important}
+.cover .float-vscode,.cover .float-campus{animation:sdSwayB 7.6s ease-in-out infinite!important}
+.cover .float-python{animation-delay:-1.8s!important}
+.cover .float-vscode{animation-delay:-3.4s!important}
+.cover .float-analytics{animation-delay:-4.6s!important}
+.cover .float-campus{animation-delay:-2.2s!important}
+@keyframes sdSwayA{
+  0%,100%{translate:0 0}
+  30%{translate:5px -12px}
+  65%{translate:-5px 5px}
+}
+@keyframes sdSwayB{
+  0%,100%{translate:0 0}
+  35%{translate:-7px 9px}
+  70%{translate:6px -8px}
+}
+/* The bottom edge forms a foreground matte so objects sink BEHIND the
+   next section rather than abruptly disappearing in front of the author. */
+.cover-stage::before{
+  content:"";position:absolute;z-index:6;left:0;right:0;bottom:0;
+  height:27%;pointer-events:none;
+  background:linear-gradient(180deg,transparent 4%,#0b0714a6 62%,#0b0714 98%);
+}
+.cover .cover-copy{z-index:7}
+.cover .cover-bottom{z-index:8}
+.cover .cover-art{filter:none!important}
+.cover .orbit-illustration{pointer-events:none}
+@media(max-width:1250px){
+ .cover .float-python{--asset-width:66px;right:1%;top:16%}
+ .cover .float-vscode{--asset-width:62px;left:2%}
+ .cover .float-analytics{--asset-width:83px;left:2%}
+ .cover .float-campus{--asset-width:83px;right:1%}
+}
+@media(max-width:900px){
+ .cover .float-vscode{display:none!important}
+ .cover .float-python{--asset-width:62px;right:1%;top:11%}
+ .cover .float-analytics{--asset-width:73px;left:2%;bottom:36%}
+ .cover .float-campus{--asset-width:75px;right:0;top:53%}
+}
+@media(max-width:680px){
+ .cover .float-campus{display:none!important}
+ .cover .float-python{--asset-width:47px;top:15%;right:8%}
+ .cover .float-analytics{--asset-width:55px;bottom:43%;left:8%}
+ .cover-stage::before{height:22%}
+}
+@media(prefers-reduced-motion:reduce){
+ .cover .float-asset{animation:none!important;opacity:.83!important;transform:none!important;translate:none!important;will-change:auto}
+}
+@media print{
+ .cover .hero-orbit-assets{display:none!important}
+ .cover-stage::before{display:none!important}
+}
