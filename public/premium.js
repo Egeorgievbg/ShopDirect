@@ -31,12 +31,10 @@ function init(){
   .fromTo(".academy-brand.hero-academy",{opacity:0,y:18,scale:.93},
     {opacity:1,y:0,scale:1,duration:.75},"-=.48")
   .fromTo(".cover-bottom > *",{opacity:0,y:12},{opacity:1,y:0,duration:.68,stagger:.12},"-=.38");
-  gsap.fromTo(".cover-art",{opacity:0,scale:.82,rotate:-9},
-    {opacity:.85,scale:1,rotate:0,duration:1.6,delay:.3,ease:"power2.out"});
+  /* The cinematic portrait scroll controls .cover-art and portrait transforms. */
   gsap.fromTo(".float-chip",{opacity:0,y:25,scale:.83},
     {opacity:1,y:0,scale:1,duration:.78,stagger:.18,delay:1.23,ease:"back.out(1.25)"});
-  gsap.fromTo(".cover-portrait",{opacity:0,y:65,scale:.94},
-    {opacity:1,y:0,scale:1,duration:1.25,delay:.53,ease:"power3.out",clearProps:"transform,opacity"});
+  /* Portrait entrance and exit are handled by scroll-story.js. */
  }
  if(!st)return;
  for(const element of $$(".intro-grid > *, .research-intro-row > *, .chapter-head > *, .chapter-explain > p, .method-note, .execute-card, .conclusion-grid > *, .final-cta > *, .stat-ribbon > div")){
@@ -46,7 +44,7 @@ function init(){
    });
  }
  st.create({trigger:".cover",start:"top top",end:"bottom top",scrub:.8,animation:gsap.to(".cover-noise",{yPercent:13,ease:"none",paused:true})});
- for(const asset of $(".presenting-feature, .special-thanks")){
+ for(const asset of $$(".presenting-feature, .special-thanks")){
   gsap.fromTo(asset,{opacity:0,y:60,scale:.965},
     {opacity:1,y:0,scale:1,duration:1.08,ease:"power3.out",clearProps:"transform,opacity",
       scrollTrigger:{trigger:asset,start:"top 89%",once:true}});
@@ -57,7 +55,7 @@ function init(){
  gsap.fromTo(".special-thanks img",{opacity:.3,y:26},
    {opacity:1,y:0,duration:1.15,ease:"power3.out",clearProps:"transform,opacity",
     scrollTrigger:{trigger:".special-thanks",start:"top 85%",once:true}});
-  for(const c of $(".chapter")){
+  for(const c of $$(".chapter")){
   st.create({trigger:c,start:"top 62%",end:"bottom 38%",
    onEnter:()=>c.classList.add("focused"),onLeave:()=>c.classList.remove("focused"),
    onEnterBack:()=>c.classList.add("focused"),onLeaveBack:()=>c.classList.remove("focused")});
