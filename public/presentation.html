@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="bg"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0B0714"><meta name="description" content="Интерактивна академична защита на Илияна Цанова — осем слайда с Python анализ, инфографики и ElevenLabs озвучаване."><title>ShopDirect P3.1 · Онлайн представяне — Илияна Цанова</title>
+<meta name="theme-color" content="#0B0714"><meta name="description" content="Интерактивна академична защита на Илияна Цанова — осем слайда с Python анализ, 16 оригинални визуални assets и интерактивни инфографики."><title>ShopDirect P3.1 · Онлайн представяне — Илияна Цанова</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -11,11 +11,11 @@
 </style>
 <link rel="stylesheet" href="/presentation-premium.css">
 <link rel="stylesheet" href="/presentation-infographics.css">
-<link rel="stylesheet" href="/presentation-fullscreen.css">
+<link rel="stylesheet" href="/presentation-cinematic.css">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="/presentation-motion.js" defer></script>
 <script src="/presentation-infographics.js" defer></script>
-<script src="/presentation-fullscreen.js" defer></script>
+<script src="/presentation-cinematic.js" defer></script>
 </head><body>
 <header class="hud"><a class="brand" href="/">shopdirect<b>.</b> / presentation</a><span class="counter" id="counter">01 / 08</span><div class="hud-tools"><a href="/report.html">Пълен доклад ↗</a><button type="button" id="notes" title="Бележки за говорене">Бележки</button><button type="button" id="fullscreen" title="Цял екран">⛶</button><button type="button" id="print" title="Печат / PDF">PDF</button></div></header>
 <main class="slides" id="slides">
@@ -30,14 +30,4 @@
 </main>
 <div class="speaker" id="speaker"><b>Бележки за говорене</b><p id="speaker-text"></p></div>
 <footer class="footer"><div class="progress"><i id="slide-progress"></i></div><div><button id="previous" type="button" title="Предишен слайд" aria-label="Предишен слайд">←</button> <button id="next" type="button" title="Следващ слайд" aria-label="Следващ слайд">→</button></div></footer>
-<script>
-(()=>{"use strict";const slides=[...document.querySelectorAll(".slide")];let index=0;const $=id=>document.getElementById(id);let notes=false;
-function show(value){index=(value+slides.length)%slides.length;slides.forEach((s,i)=>s.classList.toggle("active",i===index));$("counter").textContent=String(index+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");$("slide-progress").style.width=((index+1)/slides.length*100)+"%";$("speaker-text").textContent=slides[index].dataset.note;history.replaceState(null,"","#"+(index+1))}
-$("previous").addEventListener("click",()=>show(index-1));$("next").addEventListener("click",()=>show(index+1));
-$("notes").addEventListener("click",()=>{notes=!notes;$("speaker").classList.toggle("visible",notes)});
-$("fullscreen").addEventListener("click",()=>{if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen?.()});
-$("print").addEventListener("click",()=>window.print());
-document.addEventListener("keydown",e=>{if(["ArrowRight","PageDown"," "].includes(e.key)){e.preventDefault();show(index+1)}if(["ArrowLeft","PageUp"].includes(e.key)){e.preventDefault();show(index-1)}});
-show(Math.max(0,Math.min(slides.length-1,Number(location.hash.slice(1)||"1")-1)));
-})();
-</script></body></html>
+</body></html>
