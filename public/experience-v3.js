@@ -110,7 +110,7 @@ function focusChapters(){
 }
 
 function init(){
- initLoader();animateStats();motionAssets();focusChapters();
+ /* V4 owns overlay and floating GSAP to avoid overlapping timelines. */ animateStats();focusChapters();
  if(window.ScrollTrigger&&!reduced()){
   requestAnimationFrame(()=>window.ScrollTrigger.refresh());
  }
