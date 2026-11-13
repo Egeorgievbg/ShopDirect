@@ -69,7 +69,7 @@ function motionAssets(){
  const assets=$$(".cover .float-asset");
  assets.forEach((el,i)=>{
   g.fromTo(el,{autoAlpha:0,scale:.72,rotate:-17},
-   {autoAlpha:1,scale:1,rotate:0,duration:.85,delay:.8+(i*.11),ease:"back.out(1.5)",clearProps:"scale,rotation"});
+   {autoAlpha:1,scale:1,rotate:0,duration:.85,delay:.8+(i*.11),ease:"back.out(1.5)",clearProps:"transform"});
  });
  if(window.ScrollTrigger){
   g.registerPlugin(window.ScrollTrigger);
