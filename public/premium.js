@@ -49,9 +49,7 @@ function init(){
     {opacity:1,y:0,scale:1,duration:1.08,ease:"power3.out",clearProps:"transform,opacity",
       scrollTrigger:{trigger:asset,start:"top 89%",once:true}});
  }
- gsap.fromTo(".presenting-portrait",{opacity:.2,x:45},
-   {opacity:1,x:0,duration:1.0,ease:"power3.out",clearProps:"transform,opacity",
-    scrollTrigger:{trigger:".presenting-feature",start:"top 85%",once:true}});
+ /* Presenter animation is governed by scroll-story.js to prevent competing transforms. */
  gsap.fromTo(".special-thanks img",{opacity:.3,y:26},
    {opacity:1,y:0,duration:1.15,ease:"power3.out",clearProps:"transform,opacity",
     scrollTrigger:{trigger:".special-thanks",start:"top 85%",once:true}});
