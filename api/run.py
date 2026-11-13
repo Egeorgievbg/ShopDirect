@@ -106,7 +106,11 @@ def make_model(kind):
 class Study:
     """Request-local state. Reuse trained models only within one explicit run."""
     def __init__(self):
+        self.started = time.monotonic()
+        self.trace = []
         self.frame, self.meta = load_dataset()
+        self.log("dataset", f"CSV зареден: {self.meta['rows']} клиента, {self.meta['columns']} колони.")
+        self.log("validation", f"Проверени ID и липсващи стойности: {self.meta['missing_values']} пропуска.")
         self.y = (self.frame["response"] == "Yes").astype(int)
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
             self.frame[FEATURES], self.y,
@@ -115,17 +119,32 @@ class Study:
         self.trained = {}
         self.predicted = {}
         self.cv_scores = {}
+        self.log("split", f"Stratified split: {len(self.X_train)} train / {len(self.X_test)} test.")
+
+    def log(self, stage, message):
+        """Server-recorded milestone with real elapsed monotonic time."""
+        self.trace.append({
+            "at": round(time.monotonic() - self.started, 3),
+            "stage": stage,
+            "message": message,
+        })
 
     def train(self, kind):
         if kind not in self.trained:
+            label = "Logistic Regression" if kind == "logistic" else "Random Forest"
+            self.log("model", f"Инициализиран {label} с фиксиран random_state={SEED}.")
             model = make_model(kind)
             cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=SEED)
+            self.log("cross_validation", f"Започва 5-fold CV за {label}.")
             scores = cross_val_score(model, self.X_train, self.y_train,
                                      scoring="roc_auc", cv=cv)
+            self.log("cross_validation", f"{label}: CV AUC = {float(scores.mean()):.4f}.")
+            self.log("fit", f"Обучение на {label} върху {len(self.X_train)} наблюдения.")
             model.fit(self.X_train, self.y_train)
             self.cv_scores[kind] = scores
             self.predicted[kind] = model.predict_proba(self.X_test)[:, 1]
             self.trained[kind] = model
+            self.log("test", f"{label}: Test AUC = {roc_auc_score(self.y_test, self.predicted[kind]):.4f}.")
         return self.trained[kind]
 
     def statistics(self, kind):
@@ -322,19 +341,25 @@ STEP_CODE = {
 
 
 def execute(step):
-    """Execute a selected chapter (or all chapters) against the bundled dataset."""
+    """Execute real Python and return a truthful, timestamped milestone trace."""
     study = Study()
-    started = time.monotonic()
     if step == "all":
-        result = {key: function(study) for key, function in STEP_FUNCTIONS.items()}
+        result = {}
+        for key, function in STEP_FUNCTIONS.items():
+            study.log("chapter", f"Начало на глава: {key}.")
+            result[key] = function(study)
+            study.log("completed", f"Изчисленията за {key} завършиха.")
     elif step in STEP_FUNCTIONS:
+        study.log("chapter", f"Начало на глава: {step}.")
         result = STEP_FUNCTIONS[step](study)
+        study.log("completed", f"Изчисленията за {step} завършиха.")
     else:
         raise ValueError("Неизвестна аналитична глава.")
+    elapsed = round(time.monotonic() - study.started, 3)
     return {
         "step": step, "result": result,
         "dataset": study.meta, "execution": "Python / pandas / scikit-learn",
-        "elapsed_seconds": round(time.monotonic() - started, 3),
+        "trace": study.trace, "elapsed_seconds": elapsed,
         "method": {"train_test": "75/25 stratified",
                    "cv": "StratifiedKFold(5, shuffle=True)",
                    "random_state": 42, "probability_cutoff": .5},

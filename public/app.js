@@ -5,6 +5,7 @@
   const steps = ["quality", "patterns", "logistic", "forest", "comparison", "targeting"];
   const results = new Map();
   const sourceCode = new Map();
+  let activeRun = false;
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const format = (x, digits = 3) => Number(x).toLocaleString("bg-BG", {
@@ -207,18 +208,23 @@
   }
 
   async function runOne(step) {
-    if(!steps.includes(step))return;
+    if(!steps.includes(step)||activeRun)return;
+    activeRun=true;
     runState(step,"Изпълнява се…","running");
+    window.ShopDirectMotion?.begin?.(step);
     const button=$('[data-run="'+step+'"]');
     const prior=button.textContent;
     button.innerHTML='<i class="loading-spin" aria-hidden="true"></i> Изчисляване…';
     try{
       const payload=await request(step);
+      await window.ShopDirectMotion?.replay?.(step,payload);
       results.set(step,payload.result);
       renderers[step](payload.result,payload.elapsed_seconds);
+      window.ShopDirectMotion?.revealResult?.(step);
       runState(step,"✓ Изпълнено с Python","success");
       toast("Глава "+(steps.indexOf(step)+1)+" е изпълнена успешно.");
     }catch(error){
+      window.ShopDirectMotion?.fail?.(step,error);
       runState(step,"⚠ Грешка","error");
       toast("Неуспешно изпълнение на главата.");
       const stage=stageOf(step);
@@ -228,20 +234,26 @@
       stage.appendChild(msg);
     }finally{
       button.textContent=prior;
+      activeRun=false;
     }
   }
 
   async function runAll() {
+    if(activeRun)return;
+    activeRun=true;
+    window.ShopDirectMotion?.begin?.("all");
     const triggerButtons=["nav-run-all","final-run-all"].map(id=>$("#"+id)).filter(Boolean);
     triggerButtons.forEach(b=>{b.disabled=true;b.textContent="Изчисляване на всички глави…"});
     steps.forEach(s=>runState(s,"Изчислява се…","running"));
     try{
       const payload=await request("all");
+      await window.ShopDirectMotion?.replay?.("all",payload);
       const finished=payload.result||{};
       for(const step of steps){
         if(!finished[step])throw Error("Липсва резултат за глава "+step);
         results.set(step,finished[step]);
         renderers[step](finished[step],payload.elapsed_seconds);
+        window.ShopDirectMotion?.revealResult?.(step);
         runState(step,"✓ Изпълнено с Python","success");
       }
       const status=$("#complete-status");
@@ -252,14 +264,16 @@
       toast("Успешно изпълнение на шестте Python глави.");
       $("#chapter-quality").scrollIntoView({behavior:"smooth",block:"start"});
     }catch(error){
+      window.ShopDirectMotion?.fail?.("all",error);
       steps.forEach(s=>runState(s,"⚠ Проверете API","error"));
       toast("Неуспешно пълно изпълнение: "+error.message);
       const status=$("#complete-status");status.hidden=false;
       status.textContent="Изпълнението не е завършило: "+error.message;
     }finally{
+      activeRun=false;
       triggerButtons.forEach((b,i)=>{b.disabled=false;b.innerHTML=i===0
-        ?'<span class="play-small">▶</span> Изпълни всичко'
-        :'▶ Изпълни всички глави'});
+        ?'<span class="play-small">▶</span> Стартирай изследването'
+        :'▶ Стартирай цялото изследване'});
     }
   }
 
@@ -267,7 +281,7 @@
     const container=$("#code-"+step);
     const opening=container.hidden;
     container.hidden=!opening;button.setAttribute("aria-expanded",String(opening));
-    button.innerHTML='<span>⌘</span> '+(opening?"Скрий кода":"Виж кода");
+    button.innerHTML='<span>⌘</span> '+(opening?"Скрий Python логиката":"Прегледай Python логиката");
     if(!opening)return;
     const node=codeOf(step);
     if(sourceCode.has(step)){node.textContent=sourceCode.get(step);return}

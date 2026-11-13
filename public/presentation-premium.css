@@ -1,0 +1,73 @@
+/* ShopDirect · Academic Defense · Purple edition */
+:root{--dark:#0b0714;--deep:#1c1033;--lime:#b388ff;--ivory:#f7f5ff;--ink:#211333;--text:#f7f5ff;--muted:#cab6e3;--sans:"Montserrat",sans-serif;--serif:"Montserrat",sans-serif}
+html,body{background:#0b0714;color:#f7f5ff;font-family:var(--sans)}
+.hud{background:#0d0718ed;border-color:#bd97ff36}
+.hud .brand{font:800 16px var(--sans)}
+.hud .brand b{color:#bb8dff}
+.hud .counter{color:#cfb7ff}
+.hud-tools button,.hud-tools a{border-color:#a47ac75d;color:#ece1ff;background:#281541}
+.hud-tools button:hover,.hud-tools a:hover{background:#4c257d}
+.slide{background:radial-gradient(ellipse at 75% 30%,#341954,#0b0714 67%);isolation:isolate}
+.slide:nth-child(even){background:#f7f5ff;color:#23163c}
+.slide:after{border-color:#b388ff24;box-shadow:0 0 0 65px #ba80ff0b,0 0 0 130px #ba80ff06}
+.slide:nth-child(even):after{border-color:#7642d212;box-shadow:0 0 0 65px #7642d208,0 0 0 130px #7642d205}
+.label{color:#c29cfc;font:800 11px var(--sans)}
+.slide:nth-child(even) .label{color:#7244b2}
+.headline{font:800 clamp(47px,6.1vw,96px)/1.08 var(--sans);letter-spacing:-.08em}
+.headline em{font-style:normal;background:linear-gradient(110deg,#f1dfff,#b588ff);background-clip:text;color:transparent}
+.slide:nth-child(even) .headline em{background:linear-gradient(100deg,#6130b7,#9860ff);background-clip:text;color:transparent}
+.text{color:#d7c4e8;line-height:1.75;font-size:clamp(16px,1.8vw,22px)}
+.slide:nth-child(even) .text{color:#665477}
+.hero-mark{border-color:#a66fc74d;color:#bea4d6}
+.kpi{border-color:#ad85d554}
+.kpi strong{font:800 clamp(46px,5.7vw,84px) var(--sans);letter-spacing:-.08em}
+.kpi small{color:#c8b5dc}
+.slide:nth-child(even) .kpi small{color:#765f89}
+.bar .track{background:#70518c4b}
+.bar .track i{background:linear-gradient(90deg,#7345ff,#bc92ff)}
+.slide:nth-child(even) .bar .track i{background:linear-gradient(90deg,#6744d8,#aa81ff)}
+.bar b{font-weight:800}
+.table td,.table th{border-color:#bf9ce34a}
+.table th{color:#c1a8da}
+.slide:nth-child(even) .table th{color:#72528c}
+.table tr.highlight{background:#7a4fd94a}
+.slide:nth-child(even) .table tr.highlight{background:#e6dbf8}
+.model{border-color:#a476ed77;background:#1c10334d;box-shadow:0 15px 50px #06011125}
+.model b{font:900 84px var(--sans);color:#bd92ff}
+.model small{color:#c6b1e7}
+.slide:nth-child(even) .model{background:#f7f2ff;border-color:#c5aaed}
+.slide:nth-child(even) .model b{color:#774add}
+.slide:nth-child(even) .model small{color:#7c6691}
+.takeaway{border-color:#b587ff;color:#f0e2ff;font-weight:600}
+.slide:nth-child(even) .takeaway{border-color:#8d60e9;color:#5b4083}
+.footer{background:#0b0714df}
+.footer .progress{background:#5d417b}
+.footer .progress i{background:linear-gradient(90deg,#6d4aff,#cd9fff)}
+.footer button{border-color:#9471b4;color:#e3cbff}
+.footer button:hover{background:#5b337e}
+.speaker{background:#fbf7ff;color:#3b2857;border:1px solid #dbcaef}
+.speaker b{color:#7046b3}
+.intro-badge{color:#c4aadf}
+.slide:nth-child(even) .intro-badge{color:#725f87}
+.defense-seal{display:inline-flex;align-items:center;gap:14px;padding:13px 17px;margin-bottom:23px;border:1px solid #a47eec5e;border-radius:16px;background:#aa85df17}
+.defense-seal img{width:48px;height:48px;object-fit:contain;background:#fff;border-radius:50%}
+.defense-seal span{font:600 11px/1.6 var(--sans);color:#dac2f1}
+.defense-seal strong{font:800 13px var(--sans);color:#f4eaff}
+.defense-byline{font:800 15px var(--sans);color:#dbc5fa}
+.slide:nth-child(even) .defense-byline{color:#643da2}
+.slide.active .inner{will-change:transform,opacity}
+@media(max-width:700px){
+ .hud{padding:12px 13px}.hud .brand{font-size:12px}
+ .headline{font-size:clamp(43px,9.3vw,70px)}
+ .model b{font-size:50px}.model{padding:18px}
+ .slide{padding:84px 19px 105px}
+ .hero-mark{font-size:11px;gap:12px;flex-wrap:wrap}
+ .defense-seal{gap:8px;padding:9px 10px}
+ .defense-seal img{width:35px;height:35px}
+ .defense-seal span{font-size:9px}
+}
+@media print{
+ .slide{background:#140a27!important;color:#fff!important}
+ .slide:nth-child(even){background:#f8f5ff!important;color:#1d1239!important}
+ .model{box-shadow:none}
+}
