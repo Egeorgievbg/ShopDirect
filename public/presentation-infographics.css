@@ -1,0 +1,83 @@
+/* ShopDirect / Seven academic infographics — authored SVG, zero generative credits */
+.viz-shell{position:relative;margin:26px 0 0;padding:22px;overflow:hidden;border:1px solid #a883f659;border-radius:20px;background:linear-gradient(145deg,#211336,#130b26);box-shadow:inset 0 1px 0 #ffffff16,0 22px 58px #06010f46;isolation:isolate}
+.viz-shell:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 86% 6%,#9f6fff21,transparent 48%),linear-gradient(90deg,#b68bff06 1px,transparent 1px),linear-gradient(#b68bff06 1px,transparent 1px);background-size:auto,34px 34px,34px 34px}
+.viz-shell>*{position:relative;z-index:1}
+.viz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px;color:#c6abe8;font:700 10px/1.5 "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase}
+.viz-tag{display:inline-flex;align-items:center;gap:7px;border:1px solid #9670c26c;border-radius:100px;padding:5px 10px;background:#6842a420;color:#e8d5ff}
+.viz-tag:before{content:"";display:block;width:6px;height:6px;background:#bb8aff;box-shadow:0 0 12px #bb8aff;border-radius:50%}
+.viz-foot{color:#b9a6d3;font:11px/1.65 "Montserrat",sans-serif;margin:12px 0 0}
+.viz-foot strong{color:#eee3ff}
+.viz-svg{display:block;width:100%;max-width:100%;height:auto;overflow:visible}
+.viz-svg text{font-family:"Montserrat",sans-serif}
+.viz-grid-line{stroke:#a585cb35;stroke-width:1}
+.viz-route-line{fill:none;stroke:#b68cff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.viz-accent{color:#be91ff}
+.viz-muted{color:#bda8d6}
+.viz-stat{font:800 clamp(22px,3.5vw,46px)/1.08 "Montserrat",sans-serif;letter-spacing:-.06em;color:#fff}
+.viz-caption{font:700 10px/1.6 "JetBrains Mono",monospace;color:#c2abd7;letter-spacing:.04em}
+.viz-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.viz-card{min-width:0;padding:15px;border:1px solid #a57cc94f;border-radius:14px;background:#381e574b}
+.viz-card b{display:block;color:#f5edff;font:800 clamp(22px,3vw,38px) "Montserrat",sans-serif;letter-spacing:-.06em}
+.viz-card small{color:#c6acd9;font:600 10px/1.5 "Montserrat",sans-serif}
+.viz-data-row{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#ded1f3;font:600 12px "Montserrat",sans-serif}
+.viz-pill{border:1px solid #ae82f370;color:#edd7ff;background:#673eaa3b;border-radius:30px;padding:6px 10px;font:700 10px "JetBrains Mono",monospace;white-space:nowrap}
+.viz-matrix{display:grid;grid-template-columns:repeat(40,minmax(0,1fr));gap:3px;margin-top:17px}
+.viz-matrix i{display:block;aspect-ratio:1;border-radius:2px;background:#644e7b;opacity:.62}
+.viz-matrix i.positive{background:linear-gradient(135deg,#9a63ff,#d2b0ff);opacity:1;box-shadow:0 0 6px #ac77fc66}
+.viz-legend{display:flex;gap:17px;align-items:center;flex-wrap:wrap;color:#d1c0e6;font-size:11px}
+.viz-legend span{display:flex;align-items:center;gap:7px}
+.viz-legend i{display:block;width:9px;height:9px;background:#9a63ff;border-radius:3px}
+.viz-legend i.neg{background:#644e7b}
+.viz-split{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.viz-column{display:grid;gap:13px}
+.viz-barrow{display:grid;gap:7px}
+.viz-bartrack{height:14px;border-radius:100px;background:#65467d;overflow:hidden}
+.viz-barfill{display:block;height:100%;width:var(--fill,0%);transform-origin:left;background:linear-gradient(90deg,#7642e9,#c7a1ff);border-radius:100px}
+.viz-barfill.secondary{background:linear-gradient(90deg,#865ea2,#b5a2cf)}
+.viz-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.viz-compare>div{padding:13px 15px;border:1px solid #9e77c35e;border-radius:13px;background:#ffffff06}
+.viz-compare strong{display:block;color:#f3e7ff;font:800 28px "Montserrat",sans-serif;letter-spacing:-.065em}
+.viz-compare small{color:#beacd6;font-size:10px}
+.viz-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:15px}
+.viz-flow-node{padding:15px;border:1px solid #b084f05e;background:#3c245474;border-radius:15px;text-align:center;min-width:0}
+.viz-flow-node b{display:block;color:#f6eaff;font:800 20px "Montserrat",sans-serif}
+.viz-flow-node span{font:600 10px/1.4 "Montserrat",sans-serif;color:#c9b5dc}
+.viz-flow-arrow{color:#b68eff;font:900 19px "Montserrat",sans-serif;text-align:center}
+.viz-model-lanes{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:17px}
+.viz-model-lanes>div{border:1px solid #a781d86a;border-radius:14px;padding:16px;background:#311b4e45}
+.viz-model-lanes strong{display:block;color:#f5eaff;font:800 18px "Montserrat",sans-serif}
+.viz-model-lanes small{color:#c4acd9;font-size:11px}
+.viz-action{border:1px solid #ba92ff;background:linear-gradient(110deg,#7549ec,#9a65e6);color:white;border-radius:10px;padding:10px 15px;font:700 11px "Montserrat",sans-serif;cursor:pointer}
+.viz-action:hover{filter:brightness(1.13);transform:translateY(-2px)}
+.viz-action:disabled{opacity:.6;cursor:wait}
+.viz-error{color:#ffc7d7!important}
+.viz-roc-chart{max-width:680px;margin:auto}
+.viz-roc-axis{font:700 11px "JetBrains Mono",monospace;fill:#d4c5ed}
+.viz-roc-note{font-size:10px;color:#cab6de;text-align:center}
+.viz-scenarios{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 14px}
+.viz-choice{border:1px solid #a587ca80;color:#dac9ef;background:#322049;border-radius:99px;padding:9px 14px;cursor:pointer;font:800 11px "Montserrat",sans-serif}
+.viz-choice.selected{color:#210e37;background:#dfc7ff;border-color:#e4cfff;box-shadow:0 0 25px #aa7dff50}
+.viz-choice:focus-visible{outline:3px solid #dcadff;outline-offset:2px}
+.viz-progress{height:17px;background:#5c4375;border-radius:12px;overflow:hidden;margin:12px 0 8px}
+.viz-progress i{display:block;height:100%;width:30%;background:linear-gradient(90deg,#734bfb,#d9b1ff);border-radius:12px}
+.viz-roadmap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.viz-roadmap .step{position:relative;border:1px solid #b587db65;background:#39215361;border-radius:15px;padding:18px;min-width:0;min-height:170px}
+.viz-roadmap .step small{display:block;font:700 11px "JetBrains Mono",monospace;color:#caadfa;margin-bottom:16px}
+.viz-roadmap .step strong{display:block;font:800 clamp(13px,1.5vw,18px) "Montserrat",sans-serif;color:#f4edff;margin-bottom:9px}
+.viz-roadmap .step p{font:500 11px/1.6 "Montserrat",sans-serif;color:#d0bddf;margin:0}
+.viz-roadmap .step:after{content:"→";position:absolute;right:-17px;top:30px;color:#d6b2ff;font-size:21px;z-index:4}
+.viz-roadmap .step:last-child:after{display:none}
+.viz-shell svg:focus{outline:none}
+.viz-full{width:min(100%,1040px);margin-top:25px}
+.slide:nth-child(even) .viz-shell{background:linear-gradient(145deg,#281b40,#1a1030);color:#f8f4ff}
+.slide:nth-child(even) .viz-foot{color:#d3c1ea}
+.slide:nth-child(even) .viz-data-row{color:#f1e5ff}
+.slide:nth-child(even) .viz-caption{color:#d6c0ee}
+.slide:nth-child(even) .viz-legend{color:#e7d9f4}
+.slide:nth-child(even) .viz-top{color:#dfcafa}
+.slide .viz-shell .viz-foot{color:#c7b5df}
+@media(min-width:1050px) and (min-height:750px){.viz-shell{margin-top:31px;padding:26px}}
+@media(max-width:740px){.viz-shell{padding:13px;margin:19px 0 0;border-radius:14px}.viz-top{font-size:9px;flex-wrap:wrap}.viz-cards{gap:6px}.viz-card{padding:10px}.viz-card b{font-size:23px}.viz-card small{font-size:9px}.viz-matrix{grid-template-columns:repeat(25,minmax(0,1fr));gap:2px}.viz-split{grid-template-columns:1fr;gap:12px}.viz-flow{gap:5px}.viz-flow-node{padding:10px}.viz-flow-node b{font-size:13px}.viz-flow-node span{font-size:8px}.viz-roadmap{gap:6px}.viz-roadmap .step{padding:10px;min-height:135px}.viz-roadmap .step strong{font-size:12px}.viz-roadmap .step p{font-size:9px}.viz-roadmap .step:after{right:-12px;font-size:14px}.viz-model-lanes{gap:8px}.viz-model-lanes>div{padding:10px}.viz-model-lanes strong{font-size:14px}.viz-model-lanes small{font-size:9px}}
+@media(max-width:390px){.viz-matrix{grid-template-columns:repeat(20,minmax(0,1fr))}.viz-roadmap{grid-template-columns:1fr}.viz-roadmap .step{min-height:auto}.viz-roadmap .step:after{display:none}}
+@media(prefers-reduced-motion:reduce){.viz-shell *{animation:none!important;transition:none!important}}
+@media print{.viz-shell{box-shadow:none!important;break-inside:avoid}.viz-shell:before{display:none}.viz-choice,.viz-action{display:none!important}.viz-foot{color:#d4c8e6!important}.viz-matrix i{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
