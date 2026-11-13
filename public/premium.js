@@ -31,12 +31,10 @@ function init(){
   .fromTo(".academy-brand.hero-academy",{opacity:0,y:18,scale:.93},
     {opacity:1,y:0,scale:1,duration:.75},"-=.48")
   .fromTo(".cover-bottom > *",{opacity:0,y:12},{opacity:1,y:0,duration:.68,stagger:.12},"-=.38");
-  gsap.fromTo(".cover-art",{opacity:0,scale:.82,rotate:-9},
-    {opacity:.85,scale:1,rotate:0,duration:1.6,delay:.3,ease:"power2.out"});
+  /* The cinematic portrait scroll controls .cover-art and portrait transforms. */
   gsap.fromTo(".float-chip",{opacity:0,y:25,scale:.83},
     {opacity:1,y:0,scale:1,duration:.78,stagger:.18,delay:1.23,ease:"back.out(1.25)"});
-  gsap.fromTo(".cover-portrait",{opacity:0,y:65,scale:.94},
-    {opacity:1,y:0,scale:1,duration:1.25,delay:.53,ease:"power3.out",clearProps:"transform,opacity"});
+  /* Portrait entrance and exit are handled by scroll-story.js. */
  }
  if(!st)return;
  for(const element of $$(".intro-grid > *, .research-intro-row > *, .chapter-head > *, .chapter-explain > p, .method-note, .execute-card, .conclusion-grid > *, .final-cta > *, .stat-ribbon > div")){
