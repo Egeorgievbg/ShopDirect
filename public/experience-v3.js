@@ -115,7 +115,8 @@ function focusChapters(){
 }
 
 function init(){
- initLoader();animateStats();motionAssets();focusChapters();
+ /* V4 exclusively owns loader and floating motion to prevent overlapping GSAP tweens. */
+ animateStats();focusChapters();
  if(window.ScrollTrigger&&!reduced()){
   requestAnimationFrame(()=>window.ScrollTrigger.refresh());
  }
