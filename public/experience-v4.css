@@ -1,0 +1,231 @@
+/* ShopDirect V4 / controlled floating motion, strict presenter grid, centered loader.
+ * Additive overrides to v3. The GSAP scroll timeline owns .float-shell.
+ * CSS idle sway owns the child image, avoiding transform conflicts. */
+:root{--v4-ink:#f7f5ff;--v4-accent:#b995ff}
+.cover .hero-orbit-assets{z-index:6;isolation:isolate;overflow:visible;inset:0;pointer-events:none}
+.cover .float-shell{
+  position:absolute;display:block;z-index:3;
+  width:var(--float-w,72px);height:auto;
+  opacity:0;transform-origin:50% 48%;
+  will-change:transform,opacity;
+  filter:drop-shadow(0 8px 14px #0801128c) drop-shadow(0 0 10px #a875ff2f)
+}
+.cover .float-shell .float-asset{
+  position:static!important;display:block!important;width:100%!important;height:auto!important;max-width:100%;
+  opacity:1!important;transform-origin:50% 50%;filter:none!important;
+  animation:v4SwayA 6.2s ease-in-out infinite!important;
+  will-change:transform
+}
+.cover .float-shell:nth-child(even) .float-asset{animation-name:v4SwayB!important;animation-duration:7.6s!important}
+.cover .float-shell:nth-child(3n) .float-asset{animation-duration:8.4s!important;animation-delay:-2.2s!important}
+.cover .float-shell.float-python{--float-w:66px;top:12%;right:2%;left:auto;bottom:auto}
+.cover .float-shell.float-vscode{--float-w:62px;top:27%;left:2%;right:auto;bottom:auto}
+.cover .float-shell.float-analytics{--float-w:86px;top:auto;bottom:26%;right:-1%;left:auto}
+.cover .float-shell.float-editor{--float-w:70px;top:auto;bottom:32%;left:-1%;right:auto}
+.cover .float-shell.float-seal{--float-w:59px;top:7%;left:38%;right:auto;bottom:auto}
+.cover .float-chip{filter:drop-shadow(0 5px 10px #0c032973)}
+/* Presenting portrait remains on the left; copy is always laid out to its right.
+   The subject is intentionally allowed to bleed outside the container, but not into text. */
+.intro-section .presenting-feature,
+.presenting-feature{
+  display:grid!important;
+  grid-template-columns:minmax(0,46%) minmax(0,54%)!important;
+  position:relative;isolation:isolate;
+  min-height:clamp(390px,38vw,525px);
+  padding:0!important;
+  overflow:visible!important;
+  border-radius:24px;
+  align-items:stretch
+}
+.presenting-feature .presenting-portrait{
+  position:absolute!important;
+  z-index:2!important;
+  left:-4%!important;right:auto!important;
+  bottom:-1%!important;top:auto!important;
+  width:clamp(320px,49%,640px)!important;
+  height:calc(100% + 83px)!important;
+  max-height:none!important;max-width:none!important;
+  object-fit:contain!important;object-position:left bottom!important;
+  justify-self:auto!important;align-self:auto!important;
+  grid-column:unset!important;grid-row:unset!important;
+  margin:0!important;transform-origin:35% 80%;
+  pointer-events:none
+}
+.presenting-feature .presenting-feature-copy{
+  position:relative!important;
+  z-index:4!important;
+  grid-column:2!important;grid-row:1!important;
+  align-self:center!important;
+  width:100%;max-width:none!important;
+  min-width:0;
+  padding:36px clamp(22px,4vw,66px) 36px clamp(14px,2vw,28px)!important;
+  background:linear-gradient(90deg,#190e2bde 0%,#1b0d2f9c 20%,transparent 100%);
+  border-radius:0 23px 23px 0;
+  box-sizing:border-box
+}
+.presenting-feature .presenting-feature-copy h3{
+  font-size:clamp(30px,3.65vw,60px)!important;
+  line-height:1.07!important;
+  margin:12px 0 20px;
+  overflow-wrap:normal
+}
+.presenting-feature .presenting-feature-copy p{
+  font-size:clamp(12px,1.06vw,15px)!important;
+  line-height:1.8!important;
+  max-width:480px!important;
+  margin-block:0 12px;
+  color:#dfd0f1
+}
+.presenting-feature .presenting-overline{font-size:10px!important;letter-spacing:.07em}
+.presenting-feature .presenting-link{font-size:12px;white-space:normal}
+.presenting-feature::after{
+  content:"";position:absolute;z-index:1;left:-5%;width:53%;height:102%;top:-6%;
+  pointer-events:none;background:radial-gradient(ellipse at 52% 75%,#8959ff34,transparent 65%)
+}
+/* The entire loader, including the rings, is now one precisely centered composition. */
+.academy-loader{
+  display:grid!important;place-items:center!important;
+  padding:clamp(18px,4vh,40px)!important;
+  background:radial-gradient(circle at 50% 45%,#301458,#130922 44%,#080510 100%)!important;
+  min-height:100dvh;min-width:100vw
+}
+.academy-loader .loader-composition{
+  position:relative;z-index:5;
+  width:min(100%,420px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;margin:0 auto;
+  transform:translateZ(0)
+}
+.loader-composition .loader-kicker{
+  font:700 10px/1.5 var(--mono);letter-spacing:.19em;text-transform:uppercase;
+  color:#cbb4ff;margin-bottom:34px
+}
+.loader-composition .loader-emblem{
+  position:relative;display:grid;place-items:center;
+  width:min(60vw,250px);height:min(60vw,250px);aspect-ratio:1;
+  margin:0 auto 28px;isolation:isolate
+}
+.loader-composition .loader-orbits{
+  position:absolute;inset:0!important;
+  width:100%!important;height:100%!important;
+  transform-origin:center;pointer-events:none;display:block
+}
+.loader-composition .loader-orbits i{
+  position:absolute;inset:5%!important;border:1px solid #b18aff80;border-radius:50%;
+  box-shadow:0 0 30px #9f71ff20;animation:orbitSpin 6s linear infinite!important
+}
+.loader-composition .loader-orbits i:nth-child(2){
+  inset:16%!important;animation-duration:8s!important;animation-direction:reverse!important;
+  border-style:dashed;border-color:#d3b1ff72
+}
+.loader-composition .loader-orbits i:nth-child(3){
+  inset:29%!important;animation-duration:4.1s!important;border-color:#c7a2ff66
+}
+.loader-composition .loader-icon{
+  position:relative;z-index:3;width:clamp(105px,12vw,150px)!important;
+  height:auto!important;aspect-ratio:1;object-fit:contain;
+  filter:drop-shadow(0 0 24px #a980ffa8);
+  animation:none!important
+}
+.loader-glint{
+  position:absolute;inset:22%;z-index:2;border-radius:50%;
+  background:radial-gradient(circle,#b48bff4a,transparent 66%);
+  filter:blur(18px);pointer-events:none
+}
+.loader-composition .loader-university{
+  margin:0!important;padding:0!important;color:#d9c5fa;
+  font:700 clamp(10px,1vw,12px)/1.7 var(--sans)!important;letter-spacing:.08em
+}
+.loader-composition .loader-title{
+  margin-top:12px!important;
+  font:900 clamp(21px,2.9vw,33px)/1.2 var(--sans)!important;
+  letter-spacing:-.065em;color:#fff
+}
+.loader-composition .loader-subtitle{
+  margin-top:7px;color:#b9a5d4;font:500 11px/1.6 var(--sans)
+}
+.loader-composition .loader-progress{
+  margin-top:32px!important;height:3px;width:min(100%,320px);border-radius:4px;
+  background:#ffffff24;position:relative;overflow:hidden
+}
+.loader-composition .loader-bottom{
+  width:min(100%,320px);display:flex;align-items:center;justify-content:space-between;
+  gap:12px;text-align:left;margin-top:13px;color:#b7a3cf;font:9px/1.6 var(--mono)
+}
+.loader-bottom b{font-size:11px;color:#e4d5ff}
+@keyframes v4SwayA{
+  0%,100%{transform:translate3d(0,0,0) rotate(-6deg) scale(.96)}
+  50%{transform:translate3d(7px,-10px,0) rotate(5deg) scale(1.065)}
+}
+@keyframes v4SwayB{
+  0%,100%{transform:translate3d(0,0,0) rotate(6deg) scale(1.03)}
+  50%{transform:translate3d(-9px,7px,0) rotate(-5deg) scale(.95)}
+}
+@media(min-width:1350px){
+ .cover .float-shell.float-python{--float-w:78px;right:0}
+ .cover .float-shell.float-analytics{--float-w:99px;right:-2%}
+ .cover .float-shell.float-editor{--float-w:80px;left:-2%}
+ .cover .float-shell.float-seal{--float-w:68px}
+}
+@media(max-width:1050px){
+ .cover .float-shell.float-python{--float-w:56px;right:0}
+ .cover .float-shell.float-vscode{--float-w:49px;left:-1%}
+ .cover .float-shell.float-analytics{--float-w:75px;right:-2%}
+ .cover .float-shell.float-editor{--float-w:59px;left:-4%}
+ .cover .float-shell.float-seal{--float-w:47px;left:37%}
+ .presenting-feature .presenting-feature-copy{padding:28px 24px 28px 18px!important}
+ .presenting-feature .presenting-feature-copy h3{font-size:clamp(29px,4.2vw,45px)!important}
+}
+@media(max-width:680px){
+ .cover .hero-orbit-assets{inset:0!important}
+ .cover .float-shell.float-python{--float-w:39px;top:12%;right:10%}
+ .cover .float-shell.float-vscode{--float-w:35px;top:32%;left:6%}
+ .cover .float-shell.float-analytics{--float-w:55px;bottom:48%;right:1%}
+ .cover .float-shell.float-editor{--float-w:41px;bottom:34%;left:1%}
+ .cover .float-shell.float-seal{--float-w:36px;top:18%;left:20%}
+ .intro-section .presenting-feature,.presenting-feature{
+   grid-template-columns:minmax(0,43%) minmax(0,57%)!important;
+   min-height:clamp(285px,70vw,390px)
+ }
+ .presenting-feature .presenting-portrait{
+   width:56%!important;height:calc(100% + 38px)!important;
+   left:-14%!important;bottom:0!important;
+ }
+ .presenting-feature .presenting-feature-copy{
+   grid-column:2!important;grid-row:1!important;
+   padding:15px 13px 15px 4px!important;
+   background:linear-gradient(90deg,#160b29da,#160b29a1);
+ }
+ .presenting-feature .presenting-feature-copy h3{
+   font-size:clamp(20px,5.1vw,32px)!important;
+   margin:7px 0 10px;line-height:1.1!important
+ }
+ .presenting-feature .presenting-overline{
+   font-size:8px!important;letter-spacing:.01em!important;line-height:1.45
+ }
+ .presenting-feature .presenting-feature-copy p{
+   font-size:clamp(9px,2.2vw,11px)!important;line-height:1.6!important;
+ }
+ .presenting-feature .presenting-link{
+   font-size:9px!important;line-height:1.45!important;gap:6px!important
+ }
+ .loader-composition .loader-emblem{width:205px;height:205px;margin-bottom:17px}
+ .loader-composition .loader-kicker{font-size:9px;margin-bottom:22px}
+ .loader-composition .loader-progress{margin-top:22px!important}
+}
+@media(max-width:390px){
+ .cover .float-shell.float-vscode{display:none}
+ .presenting-feature .presenting-portrait{width:54%!important;left:-15%!important}
+ .presenting-feature .presenting-feature-copy h3{font-size:20px!important}
+ .presenting-feature .presenting-feature-copy p{font-size:9px!important}
+ .loader-composition .loader-emblem{width:170px;height:170px}
+}
+@media(prefers-reduced-motion:reduce){
+ .cover .float-shell{opacity:.8!important;transform:none!important}
+ .cover .float-shell .float-asset{animation:none!important;transform:none!important}
+ .academy-loader{display:none!important}
+}
+@media print{
+ .cover .float-shell,.academy-loader{display:none!important}
+ .presenting-feature .presenting-portrait{height:100%!important;left:-5%!important}
+}
