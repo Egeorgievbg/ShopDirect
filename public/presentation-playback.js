@@ -55,7 +55,7 @@ function controls(){
 function init(){
  controls();active=current();
  if(supported){speech.addEventListener?.("voiceschanged",chooseVoice);chooseVoice()}
- document.addEventListener("shopdirect:slidechange",e=>{active=e.detail.index;if(started)speak()});
+ window.addEventListener("shopdirect:slidechange",e=>{active=e.detail.index;if(started)speak()});
  // Initial autoplay is enabled; when onboarding exists, its start action unlocks browser audio.
  const intro=$("#cinema-intro");
  const start=()=>{started=true;playing=true;auto=true;setTimeout(speak,100)};
