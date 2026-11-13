@@ -6,7 +6,7 @@
 .cover .float-shell{
   position:absolute;display:block;z-index:3;
   width:var(--float-w,72px);height:auto;
-  opacity:0;transform-origin:50% 48%;
+  opacity:0;animation:none!important;transform-origin:50% 48%;
   will-change:transform,opacity;
   filter:drop-shadow(0 8px 14px #0801128c) drop-shadow(0 0 10px #a875ff2f)
 }
