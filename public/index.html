@@ -12,13 +12,24 @@
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/premium.css">
   <link rel="stylesheet" href="/scroll-story.css">
+  <link rel="stylesheet" href="/experience-v3.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="/premium.js" defer></script>
   <script src="/scroll-story.js" defer></script>
   <script src="/app.js" defer></script>
+  <script src="/experience-v3.js" defer></script>
 </head>
 <body>
+  <div class="academy-loader" id="academy-loader" aria-hidden="true">
+    <div class="loader-aura"></div>
+    <div class="loader-orbits" aria-hidden="true"><i></i><i></i><i></i></div>
+    <img class="loader-icon" src="/visuals/floating/academy-seal.png" alt="" width="148" height="148" decoding="async" fetchpriority="high">
+    <span class="loader-university">СТОПАНСКА АКАДЕМИЯ „Д. А. ЦЕНОВ“ · СВИЩОВ</span>
+    <strong class="loader-title">ИЛИЯНА ЦАНОВА <em>/ P3.1</em></strong>
+    <div class="loader-progress"><span id="loader-track"></span></div>
+    <div class="loader-bottom"><span>INITIALIZING RESEARCH EXPERIENCE</span><b id="loader-percent">0%</b></div>
+  </div>
   <div class="read-progress" id="read-progress" aria-hidden="true"><span></span></div>
   <a href="#main" class="skip-link">Към съдържанието</a>
   <header class="site-header" id="site-header">
@@ -88,6 +99,15 @@
             <text x="75" y="520" fill="#cceab0" font-size="13" letter-spacing="2">01 / 06</text>
             <circle cx="526" cy="280" r="7" fill="#d8ff93"/><circle cx="526" cy="280" r="19" stroke="#d8ff93" fill="none" opacity=".4"/>
           </svg>
+          <div class="hero-orbit-assets" aria-hidden="true">
+            <img class="float-asset float-python" src="/visuals/floating/python.png" width="128" height="128" loading="lazy" decoding="async" alt="">
+            <img class="float-asset float-vscode" src="/visuals/floating/vscode.png" width="137" height="128" loading="lazy" decoding="async" alt="">
+            <img class="float-asset float-analytics" src="/visuals/floating/analytics.png" width="175" height="115" loading="lazy" decoding="async" alt="">
+            <img class="float-asset float-editor" src="/visuals/floating/code-editor.png" width="145" height="105" loading="lazy" decoding="async" alt="">
+            <img class="float-asset float-campus" src="/visuals/floating/academy-building.png" width="172" height="134" loading="lazy" decoding="async" alt="">
+            <img class="float-asset float-university" src="/visuals/floating/university-icon.png" width="125" height="95" loading="lazy" decoding="async" alt="">
+            <img class="float-asset float-seal" src="/visuals/floating/academy-seal.png" width="102" height="106" loading="lazy" decoding="async" alt="">
+          </div>
           <div class="floating-metrics" aria-hidden="true">
             <div class="float-chip"><b>800</b><span>наблюдения</span></div>
             <div class="float-chip"><b>264</b><span>положителни отговора</span></div>
@@ -126,16 +146,23 @@
           </div>
           <span class="presenting-index" aria-hidden="true">RESEARCH / 2026</span>
         </div>
-        <div class="stat-ribbon">
-          <div><small>Общо наблюдения</small><strong>800</strong><span>клиенти</span></div>
-          <div><small>Положителен отговор</small><strong>33<span>%</span></strong><span>264 от 800</span></div>
-          <div><small>Обучение / тест</small><strong>75 / 25</strong><span>стратифицирано</span></div>
-          <div><small>Сравнявани модела</small><strong>02</strong><span>класификационни</span></div>
+        <div class="stat-ribbon" id="animated-stat-ribbon" aria-label="Основни резултати">
+          <div class="stat-item"><small>Клиенти в изследването</small><strong><span data-count="800" data-format="integer">800</span></strong><span>800 клиентски записа</span></div>
+          <div class="stat-item"><small>Исторически положителен отговор</small><strong><span data-count="33" data-format="integer">33</span><i>%</i></strong><span>264 от общо 800 клиента</span></div>
+          <div class="stat-item"><small>Разделяне на данните</small><strong><span data-count="75">75</span><i class="slash">/</i><span data-count="25">25</span></strong><span>Обучение / независим тест</span></div>
+          <div class="stat-item"><small>Прогнозни алгоритми</small><strong><span data-count="2" data-format="pad2">02</span></strong><span>Logistic Regression + Random Forest</span></div>
         </div>
       </div>
     </section>
 
     <div class="research-surface">
+      <div class="research-aura" aria-hidden="true">
+        <div class="research-orbit research-orbit-one"></div>
+        <div class="research-orbit research-orbit-two"></div>
+        <img class="research-float rf-python" src="/visuals/floating/python.png" alt="" width="150" height="145" loading="lazy" decoding="async">
+        <img class="research-float rf-editor" src="/visuals/floating/code-editor.png" alt="" width="160" height="114" loading="lazy" decoding="async">
+        <img class="research-float rf-university" src="/visuals/floating/university-icon.png" alt="" width="150" height="103" loading="lazy" decoding="async">
+      </div>
       <div class="research-intro wrap"><div class="section-meta"><span>RESEARCH / EXECUTION</span><span>PYTHON, РЕАЛНО ИЗПЪЛНЕНИЕ</span></div><div class="research-intro-row"><h2>Изследването,<br><em>стъпка по стъпка.</em></h2><p>Всяка глава съдържа аргументация, действителния Python код и отделен бутон за изпълнение. Всички резултати се изчисляват от вградения CSV на сървъра — без ръчно качване на файл.</p></div></div>
       <div class="reading-rail" aria-label="Навигация по глави">
         <div class="rail-sticky">
