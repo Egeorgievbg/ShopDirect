@@ -42,9 +42,16 @@
       clearProps:"filter,transform,opacity,visibility",
       scrollTrigger:{trigger:feature,start:"top 76%",once:true}});
    // Independent left-to-right entrance; the PNG hand naturally points right.
-   g.fromTo(".presenting-portrait",{autoAlpha:0,x:-115,rotate:-3,scale:.95},
-     {autoAlpha:1,x:0,rotate:0,scale:1,duration:1.3,ease:"power3.out",
-      clearProps:"transform,opacity,visibility",
+   let floatingTween=null;
+   g.fromTo(".presenting-portrait",{autoAlpha:0,x:-125,rotate:-3,scale:.95},
+     {autoAlpha:1,x:0,rotate:0,scale:1,duration:1.25,ease:"power3.out",
+      clearProps:"opacity,visibility",
+      onComplete:()=>{
+        floatingTween=g.to(".presenting-portrait",{
+          x:25,y:-8,rotation:1.2,duration:3.8,ease:"sine.inOut",
+          repeat:-1,yoyo:true,overwrite:"auto"
+        });
+      },
       scrollTrigger:{trigger:feature,start:"top 83%",once:true}});
   }
   for(const el of $$(".intro-aside > p,.chapter-explain > p,.strategy-list > div,.sources-grid p")){
