@@ -19,7 +19,7 @@
 .cover .float-shell:nth-child(even) .float-asset{animation-name:v4SwayB!important;animation-duration:7.6s!important}
 .cover .float-shell:nth-child(3n) .float-asset{animation-duration:8.4s!important;animation-delay:-2.2s!important}
 .cover .float-shell.float-python{--float-w:66px;top:12%;right:2%;left:auto;bottom:auto}
-.cover .float-shell.float-vscode{--float-w:62px;top:27%;left:2%;right:auto;bottom:auto}
+.cover .float-shell.float-vscode{--float-w:62px;top:27%;left:2%;right:auto;bottom:auto;display:block!important}
 .cover .float-shell.float-analytics{--float-w:86px;top:auto;bottom:26%;right:-1%;left:auto}
 .cover .float-shell.float-editor{--float-w:70px;top:auto;bottom:32%;left:-1%;right:auto}
 .cover .float-shell.float-seal{--float-w:59px;top:7%;left:38%;right:auto;bottom:auto}
