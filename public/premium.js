@@ -44,7 +44,7 @@ function init(){
    });
  }
  st.create({trigger:".cover",start:"top top",end:"bottom top",scrub:.8,animation:gsap.to(".cover-noise",{yPercent:13,ease:"none",paused:true})});
- for(const asset of $(".presenting-feature, .special-thanks")){
+ for(const asset of $$(".presenting-feature, .special-thanks")){
   gsap.fromTo(asset,{opacity:0,y:60,scale:.965},
     {opacity:1,y:0,scale:1,duration:1.08,ease:"power3.out",clearProps:"transform,opacity",
       scrollTrigger:{trigger:asset,start:"top 89%",once:true}});
@@ -55,7 +55,7 @@ function init(){
  gsap.fromTo(".special-thanks img",{opacity:.3,y:26},
    {opacity:1,y:0,duration:1.15,ease:"power3.out",clearProps:"transform,opacity",
     scrollTrigger:{trigger:".special-thanks",start:"top 85%",once:true}});
-  for(const c of $(".chapter")){
+  for(const c of $$(".chapter")){
   st.create({trigger:c,start:"top 62%",end:"bottom 38%",
    onEnter:()=>c.classList.add("focused"),onLeave:()=>c.classList.remove("focused"),
    onEnterBack:()=>c.classList.add("focused"),onLeaveBack:()=>c.classList.remove("focused")});
