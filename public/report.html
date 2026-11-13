@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f6f4ee">
+<meta name="description" content="Пълна аналитична курсова работа P3.1 за таргетиране на персонализирана оферта в ShopDirect.">
+<title>P3.1 · Аналитичен доклад — Илияна Цанова</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<style>
+:root{--paper:#fffefb;--ink:#1a3028}
+.report-top{height:68px;background:#132921;color:#e4f3d9;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 max(25px,calc((100vw - 1250px)/2));font-size:12px}
+.report-top a:first-child{font-size:18px;letter-spacing:-.06em;font-weight:800}
+.report-top a:first-child b{color:#d4efaa}
+.report-top .top-actions{display:flex;gap:12px;align-items:center}
+.report-top .top-actions button,.report-top .top-actions a{border:1px solid #789482;background:transparent;color:#e4f3d9;border-radius:5px;padding:8px 12px;font-size:11px;font-weight:700}
+.report-top .top-actions button:hover,.report-top .top-actions a:hover{background:#305445}
+.report-hero{padding:94px 0 50px;border-bottom:1px solid #d6ddd2}
+.report-headline{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(240px,.5fr);gap:70px;align-items:end}
+.report-code{font:700 11px var(--mono);color:#648576;letter-spacing:.1em}
+.report-hero h1{font:normal clamp(54px,6.3vw,92px)/1.02 var(--display);letter-spacing:-.078em;margin:19px 0 22px}
+.report-hero h1 em{color:#42785d}
+.report-hero .lead{max-width:760px;font-size:19px;line-height:1.65;color:#50665a}
+.report-meta{border-left:1px solid #d2dbd2;padding-left:32px;display:grid;gap:20px;font-size:12px;color:#5a7364}
+.report-meta div span{display:block;color:#8b9d91;font-size:10px;text-transform:uppercase;letter-spacing:.15em;font-weight:700;margin-bottom:5px}
+.report-meta strong{display:block;font-size:15px;color:#1f392a}
+.report-ribbon{display:grid;grid-template-columns:repeat(4,1fr);margin-top:62px;padding:23px 0;border-top:1px solid #d6ddd2}
+.report-ribbon div{display:grid;gap:1px;border-right:1px solid #d3dbd3;padding:0 25px}
+.report-ribbon div:first-child{padding-left:0}.report-ribbon div:last-child{border:0}
+.report-ribbon small{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6d8274}
+.report-ribbon strong{font:normal 43px var(--display)}
+.report-body{display:grid;grid-template-columns:210px minmax(0,1fr);gap:65px;padding-top:40px;padding-bottom:100px}
+.report-side{position:relative}
+.report-toc{position:sticky;top:30px;display:grid;gap:1px;padding-bottom:18px}
+.report-toc .toc-title{letter-spacing:.15em;color:#829387;font:800 10px var(--sans);margin-bottom:15px}
+.report-toc a{font-size:12px;color:#64776a;border-left:2px solid transparent;padding:9px 11px;line-height:1.45}
+.report-toc a:hover{color:#265d40;border-left-color:#82a383;background:#eaf2e7}
+.report-article{max-width:880px}
+.report-section{border-top:1px solid #d0dbd1;padding:43px 0 42px;scroll-margin-top:25px}
+.report-section:first-child{border:0;padding-top:0}
+.report-kicker{font:800 10px var(--sans);letter-spacing:.15em;text-transform:uppercase;color:#477258}
+.report-section h2{font:normal clamp(31px,4vw,49px)/1.12 var(--display);letter-spacing:-.058em;margin:10px 0 21px}
+.report-section h3{font-size:18px;letter-spacing:-.025em;margin:25px 0 11px}
+.report-section p{font-size:15px;line-height:1.9;color:#50655a;margin:14px 0}
+.report-section p.large{font-size:18px;color:#263d30}
+.report-section ul,.report-section ol{padding-left:21px;color:#536b5b;font-size:14px;line-height:1.85}
+.report-section li{margin-bottom:8px}
+.report-section code{font:12px var(--mono);padding:2px 4px;background:#e4ebe1;border-radius:3px;color:#275b41}
+.report-callout{border-left:3px solid #548767;background:#e8f1e6;padding:22px 24px;margin:23px 0}
+.report-callout p{margin:0;color:#2c573e;font-size:14px}
+.report-callout strong{color:#214a37}
+.report-data-table{border-collapse:collapse;width:100%;font-size:13px;margin:24px 0}
+.report-data-table thead{background:#e6eee5}
+.report-data-table th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;text-align:left;color:#426451;padding:13px 15px;border-bottom:1px solid #d2dfd0}
+.report-data-table td{padding:13px 15px;border-bottom:1px solid #e2e7df;color:#3c5948;vertical-align:top}
+.report-data-table tbody tr:nth-child(even){background:#fbfcf9}
+.report-data-table .recommend{background:#e4f0df!important;font-weight:800}
+.report-table-wrap{overflow-x:auto}
+.report-figure{margin:28px 0;background:#fff;border:1px solid #dce4d9;border-radius:8px;padding:25px}
+.report-figure h4{margin:0 0 18px;font-size:14px;color:#244638}
+.report-figure figcaption{font-size:12px;line-height:1.6;color:#789081;margin-top:15px}
+.report-bar{display:grid;grid-template-columns:125px 1fr 65px;gap:15px;align-items:center;margin:17px 0}
+.report-bar span{font-size:12px;color:#50695a}
+.report-bar .track{height:16px;background:#e6ede5;border-radius:3px;overflow:hidden}
+.report-bar i{height:100%;display:block;background:#458669;border-radius:3px}
+.report-bar strong{font:13px var(--mono);text-align:right;color:#3d6951}
+.report-panel{display:grid;grid-template-columns:repeat(2,1fr);gap:17px;margin:23px 0}
+.report-panel>div{border:1px solid #d4dfd3;padding:21px;background:#f9fbf7}
+.report-panel small{font-size:11px;color:#738c7a;display:block}
+.report-panel strong{font:normal 50px var(--display);letter-spacing:-.06em}
+.formula{margin:25px 0;padding:20px 24px;background:#142a22;color:#d6efcd;font:14px var(--mono);overflow:auto;border-radius:6px}
+.note{font-size:12px!important;color:#839486!important}
+.verifier{background:#173b2d;padding:25px;border-radius:8px;color:#fff;margin-top:26px}
+.verifier h3{margin:0 0 8px;font-size:20px}
+.verifier p{color:#c2d9ca;font-size:12px;margin:0 0 17px}
+.verifier button{background:#cef49b;border:0;padding:12px 19px;border-radius:6px;font-weight:800;color:#15321e;font-size:12px}
+.verifier button:disabled{opacity:.7}
+#verify-output{margin-top:15px;font:12px/1.8 var(--mono);color:#def9d3}
+.report-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.report-links a{border-radius:5px;border:1px solid #bccfbd;padding:10px 14px;font-size:12px;font-weight:700;color:#34654a}
+.report-links a:hover{background:#e6f0e3}
+.report-footer{background:#152d24;color:#c6d8c6;padding:35px 0;text-align:center;font-size:12px}
+@media(max-width:980px){.report-body{grid-template-columns:155px minmax(0,1fr);gap:25px}.report-headline{gap:25px}.report-meta{padding-left:22px}.report-ribbon strong{font-size:35px}}
+@media(max-width:700px){.report-top{padding:0 16px}.report-top .top-actions a{display:none}.report-hero{padding:55px 0 28px}.report-headline{grid-template-columns:1fr}.report-hero h1{font-size:54px}.report-hero .lead{font-size:16px}.report-meta{display:grid;grid-template-columns:1fr 1fr;border-left:0;border-top:1px solid #d2dbd2;padding:20px 0 0}.report-ribbon{grid-template-columns:1fr 1fr;margin-top:30px}.report-ribbon div{padding:16px!important;border-bottom:1px solid #d2dbd2}.report-ribbon div:nth-child(2){border-right:0}.report-body{display:block;padding-top:25px}.report-side{display:none}.report-panel{grid-template-columns:1fr 1fr}.report-section{padding:36px 0}.report-section p{font-size:14px}.report-bar{grid-template-columns:80px 1fr 50px;gap:6px}.report-figure{padding:17px}.report-hero .wrap,.report-body.wrap{width:calc(100% - 34px)}}
+@media print{.report-top,.report-side,.verifier,.report-links{display:none!important}.report-hero{padding-top:0}.report-hero h1{font-size:58px}.report-body{display:block;padding-top:18px}.report-section{break-inside:auto}.report-figure,.report-callout,.report-data-table{break-inside:avoid}.report-article{max-width:none}.report-footer{display:none}.report-ribbon strong{font-size:35px}body{background:#fff}}
+</style>
+</head>
+<body>
+<header class="report-top">
+  <a href="/"><b>shopdirect.</b> / coursework</a>
+  <div class="top-actions"><a href="/">← Интерактивна версия</a><a href="/presentation.html">8 слайда ↗</a><button type="button" id="print">Печат / Запази PDF ↗</button></div>
+</header>
+<div class="report-hero"><div class="wrap">
+  <div class="report-code">P3.1 / МАРКЕТИНГОВ АНАЛИЗ / МОДУЛ 06 + МОДУЛ 07</div>
+  <div class="report-headline"><div><h1>Кому да <em>предложим?</em></h1><p class="lead">Таргетиране на персонализирана оферта в онлайн магазин ShopDirect чрез логистична регресия и Random Forest.</p></div><div class="report-meta"><div><span>Разработила</span><strong>Илияна Цанова</strong></div><div><span>Факултетен номер</span><strong>252042</strong></div><div><span>Специалност</span><strong>Маркетинг</strong></div><div><span>Година</span><strong>2026</strong></div></div></div>
+  <div class="report-ribbon"><div><small>Наблюдения</small><strong>800</strong></div><div><small>Response rate</small><strong>33,0%</strong></div><div><small>Логистична AUC</small><strong>0,774</strong></div><div><small>Предложен обхват</small><strong>30%</strong></div></div>
+</div></div>
+<div class="report-body wrap">
+  <aside class="report-side"><nav class="report-toc" aria-label="Съдържание"><span class="toc-title">СЪДЪРЖАНИЕ</span><a href="#abstract">Резюме</a><a href="#problem">01. Проблем и цел</a><a href="#dataset">02. Данни</a><a href="#descriptive">03. Описателен анализ</a><a href="#methods">04. Методология</a><a href="#performance">05. Сравнение на модели</a><a href="#drivers">06. Фактори за отговор</a><a href="#selection">07. Таргетираща група</a><a href="#recommendations">08. Препоръки</a><a href="#limitations">09. Ограничения</a><a href="#reproduction">10. Код и възпроизводимост</a><a href="#references">Източници</a></nav></aside>
+  <article class="report-article">
+    <section id="abstract" class="report-section"><div class="report-kicker">Резюме</div><h2>Решението накратко</h2><p class="large">Предлагам избор на клиенти чрез логистична регресия, която ранжира вероятността за положителен отговор. При ограничен ресурс като пилотна целева група бих използвала 30% от допустимите за контакт клиенти.</p><p>Анализът се основава на 800 наблюдения от предходна промоционална кампания. Положително са отговорили 264 клиента (33%). Използвани са два класификационни модела, тествани на еднаква независима извадка от 200 наблюдения. Логистичната регресия достига ROC AUC 0,774, а Random Forest — 0,756. Разликата е малка и не е достатъчна, за да се обяви категорично статистическо превъзходство. В топ 30% от тестовите клиенти 37 от 60 са отговорили положително (61,7%).</p><div class="report-callout"><p><strong>Управленски извод:</strong> моделът може да бъде полезен за подреждане на контактите, но съществуващите данни не доказват допълнителна печалба, причинена от офертата. Необходим е контролиран пилот.</p></div></section>
+    <section id="problem" class="report-section"><div class="report-kicker">01 / Постановка</div><h2>Маркетингов проблем и въпрос</h2><p>ShopDirect е онлайн магазин за търговия на дребно, който подготвя персонализирана промоционална кампания. При предходно изпращане са наблюдавани както поведенията на клиентите, така и крайният резултат от предложението — положителен или отрицателен отговор.</p><p>Ако изпращаме кампанията без приоритизиране, отделяме ресурс и за клиенти с ниска вероятност за реакция. Затова формулирам управленския въпрос по следния начин: <strong>коя група да бъде включена първа, ако можем да контактуваме само част от допустимата аудитория?</strong></p><p>За да отговоря, първо установявам кои характеристики са свързани с отговора. След това изграждам и сравнявам два модела и накрая избирам правило за таргетиране въз основа на прогнозните вероятности.</p></section>
+    <section id="dataset" class="report-section"><div class="report-kicker">02 / Набор от данни</div><h2>800 клиента, един целеви резултат</h2><p>Използвам единствено предоставения от преподавателя файл <code>P3_1_campaign_response.csv</code>. Наблюдението е един клиент; целта <code>response</code> има класове Yes/No. Идентификаторът <code>customer_id</code> не се използва като предиктор. Няма липсващи стойности и дублирани идентификатори.</p><div class="report-table-wrap"><table class="report-data-table"><thead><tr><th>Променлива</th><th>Съдържание</th><th>Роля</th></tr></thead><tbody>
+      <tr><td><code>website_visits_30d</code></td><td>Посещения в последните 30 дни</td><td>Предиктор</td></tr><tr><td><code>orders_12m</code></td><td>Поръчки за 12 месеца</td><td>Предиктор</td></tr><tr><td><code>avg_order_value_eur</code></td><td>Средна стойност на поръчка, €</td><td>Предиктор</td></tr><tr><td><code>recency_days</code></td><td>Дни от последна покупка</td><td>Предиктор</td></tr><tr><td><code>email_engagement</code></td><td>Индекс на email ангажираност</td><td>Предиктор</td></tr><tr><td><code>promotion_affinity</code></td><td>Афинитет към промоции</td><td>Предиктор</td></tr><tr><td><code>loyalty_member</code></td><td>Членство в програма за лоялност</td><td>Предиктор</td></tr><tr><td><code>response</code></td><td>Отговор Yes / No</td><td>Целева променлива</td></tr>
+      </tbody></table></div><p class="note">Съществува и <code>customer_id</code> (ID, не влиза в прогнозата). Данните в тази учебна база не са придружени от времеви маркери, удостоверяващи кога всеки предиктор е измерен.</p></section>
+    <section id="descriptive" class="report-section"><div class="report-kicker">03 / Описателен анализ</div><h2>Къде се наблюдава по-висок отговор?</h2><p>Базовият положителен дял е 33,0%. При клиенти от програмата за лоялност той е 42,5%, а при останалите — 25,1%. Това е описателна разлика от приблизително 17,4 процентни пункта.</p><figure class="report-figure"><h4>Фигура 1. Честота на положителен отговор по членство</h4><div class="report-bar"><span>Членове</span><div class="track"><i style="width:42.5%"></i></div><strong>42,5%</strong></div><div class="report-bar"><span>Без членство</span><div class="track"><i style="width:25.1%;background:#c59b61"></i></div><strong>25,1%</strong></div><figcaption>Данни: 362 клиенти с членство и 438 без членство. По-високият отговор при членове не доказва, че самото членство е причината.</figcaption></figure><p>Разделянето по четири рангови групи на посещенията показва последователно увеличаване на response rate от 19,0% в Q1 до 48,5% в Q4.</p><figure class="report-figure"><h4>Фигура 2. Response rate според посещенията за 30 дни</h4><div class="report-bar"><span>Q1 · най-малко</span><div class="track"><i style="width:19%"></i></div><strong>19,0%</strong></div><div class="report-bar"><span>Q2</span><div class="track"><i style="width:27%"></i></div><strong>27,0%</strong></div><div class="report-bar"><span>Q3</span><div class="track"><i style="width:37.5%"></i></div><strong>37,5%</strong></div><div class="report-bar"><span>Q4 · най-много</span><div class="track"><i style="width:48.5%"></i></div><strong>48,5%</strong></div><figcaption>Всяка група съдържа 200 клиента. Равните стойности могат да попаднат в съседни рангови групи.</figcaption></figure><p>Наблюдавам и обратна тенденция за давността на покупката: клиентите с най-отдавнашни покупки имат по-нисък дял положителни отговори. Тези резултати обосновават включването на поведенчески променливи в модела.</p></section>
+    <section id="methods" class="report-section"><div class="report-kicker">04 / Аналитичен подход</div><h2>Как изграждам прогнозните модели</h2><p>Разделям данните стратифицирано на 600 клиента за обучение (75%) и 200 за тест (25%), с фиксиран <code>random_state=42</code>. На обучаващата извадка използвам <code>StratifiedKFold</code> с пет сгъвки за оценка на ROC AUC. Двете модели използват едни и същи предиктори и тестови клиенти.</p><p>Логистичната регресия оценява вероятността за положителен отговор на базата на логит функция. Числовите променливи се стандартизират в <code>Pipeline</code>, така че преобразуванията да не използват статистики от тестовата извадка. За категорийната променлива се използва бинарно кодиране.</p><div class="formula">P(Yes | X) = 1 / (1 + exp(−(β₀ + β₁X₁ + … + β₇X₇)))</div><p>Алтернативният Random Forest използва 250 дървета, максимална дълбочина 7 и минимум 5 наблюдения в листо. Параметрите ограничават сложността на отделните дървета.</p><p>Сравнявам Accuracy, Sensitivity, Specificity, ROC AUC, както и Brier score за качество на вероятностните оценки. При класификационните показатели използвам праг 0,50. За маркетинговото ранжиране използвам непрекъснатите прогнозни вероятности вместо класификацията при фиксиран праг.</p><div class="report-callout"><p><strong>Защо Accuracy не е достатъчна?</strong> Модел, който винаги прогнозира „No“, би имал 67% Accuracy, но не би открил нито един клиент, който действително е отговорил положително.</p></div></section>
+    <section id="performance" class="report-section"><div class="report-kicker">05 / Сравнение на моделите</div><h2>Тестови резултати и неопределеност</h2><div class="report-table-wrap"><table class="report-data-table"><thead><tr><th>Показател</th><th>Логистична</th><th>Random Forest</th></tr></thead><tbody>
+      <tr><td>Cross-validation ROC AUC</td><td>0,765</td><td>0,737</td></tr>
+      <tr><td>Test ROC AUC</td><td><strong>0,774</strong></td><td>0,756</td></tr>
+      <tr><td>Accuracy</td><td>78,0%</td><td>74,5%</td></tr>
+      <tr><td>Sensitivity</td><td>45,5%</td><td>33,3%</td></tr>
+      <tr><td>Specificity</td><td>94,0%</td><td>94,8%</td></tr>
+      <tr><td>Brier score (по-ниско е по-добре)</td><td>0,172</td><td>0,182</td></tr>
+      </tbody></table></div><figure class="report-figure"><h4>Фигура 3. Сравнение по Test ROC AUC</h4><div class="report-bar"><span>Logistic</span><div class="track"><i style="width:77.42%"></i></div><strong>0,774</strong></div><div class="report-bar"><span>Forest</span><div class="track"><i style="width:75.59%;background:#c59b61"></i></div><strong>0,756</strong></div><figcaption>Тестова извадка: 200 клиента. Диференцията е 0,018 AUC; изборът на модел изисква и преценка за обяснимост.</figcaption></figure><p>При логистичната регресия на теста получавам 30 TP, 8 FP, 126 TN и 36 FN. Важно е, че добрата специфичност не означава висока чувствителност. При праг 0,50 моделът все още пропуска част от реално отговорилите клиенти.</p><p>Провеждам paired bootstrap с 2000 повторни извадки от тестовите наблюдения и фиксиран random seed, като сравнявам двете AUC стойности върху едни и същи повторно избрани редове. Приблизителният 95% интервал на разликата е от −0,020 до +0,059. Той включва нула.</p><div class="report-callout"><p><strong>Избор:</strong> предпочитам логистичната регресия като по-лесна за комуникация и интерпретация при близко качество. Резултатите не доказват, че тя винаги превъзхожда Random Forest.</p></div></section>
+    <section id="drivers" class="report-section"><div class="report-kicker">06 / Интерпретация</div><h2>Кои характеристики са свързани с отговора?</h2><p>Използвам коефициентите на логистичната регресия като odds ratios. За числовите променливи една единица означава увеличение с едно стандартно отклонение, а за членството сравнявам Yes спрямо No. Стойност над 1 означава положителна асоциация при равни други характеристики.</p><div class="report-table-wrap"><table class="report-data-table"><thead><tr><th>Характеристика</th><th>Odds ratio</th><th>Интерпретация</th></tr></thead><tbody>
+      <tr><td>Членство в лоялна програма</td><td>2,45</td><td>По-високи odds при членство</td></tr>
+      <tr><td>Посещения на сайта</td><td>1,84</td><td>Положителна асоциация с активността</td></tr>
+      <tr><td>Поръчки за 12 месеца</td><td>1,58</td><td>Положителна асоциация с честота на покупка</td></tr>
+      <tr><td>Дни от последна покупка</td><td>0,57</td><td>Отрицателна асоциация с давността</td></tr>
+      </tbody></table></div><p>Интерпретацията не бива да се прави като причинно-следствена връзка: асоциацията може да бъде обусловена и от други характеристики, които липсват в базата.</p></section>
+    <section id="selection" class="report-section"><div class="report-kicker">07 / Правило за таргетиране</div><h2>Защо предлагам топ 30%?</h2><p>Подреждам 200-те тестови клиента от най-висока към най-ниска прогнозна вероятност според логистичната регресия. Сравнявам три предварително избрани сценария за обхват, за да получа практически аргумент при ограничен брой контакти.</p><div class="report-table-wrap"><table class="report-data-table"><thead><tr><th>Обхват</th><th>Контакти</th><th>Yes</th><th>Response rate</th><th>Lift</th><th>Capture</th></tr></thead><tbody>
+      <tr><td>20%</td><td>40</td><td>31</td><td>77,5%</td><td>2,35×</td><td>47,0%</td></tr>
+      <tr class="recommend"><td>30%</td><td>60</td><td>37</td><td>61,7%</td><td>1,87×</td><td>56,1%</td></tr>
+      <tr><td>40%</td><td>80</td><td>44</td><td>55,0%</td><td>1,67×</td><td>66,7%</td></tr>
+      </tbody></table></div><figure class="report-figure"><h4>Фигура 4. Историческа честота на отговор при различен обхват</h4><div class="report-bar"><span>Топ 20%</span><div class="track"><i style="width:77.5%;background:#9baea2"></i></div><strong>77,5%</strong></div><div class="report-bar"><span>Топ 30%</span><div class="track"><i style="width:61.7%;background:#367f58"></i></div><strong>61,7%</strong></div><div class="report-bar"><span>Топ 40%</span><div class="track"><i style="width:55%;background:#9baea2"></i></div><strong>55,0%</strong></div><figcaption>Сравнението е ретроспективно. Базовият response rate на теста е 33,0%; при топ 30% lift е 1,87×.</figcaption></figure><p>При топ 20% концентрацията е по-висока, но включвам само 31 от общо 66 отговорили клиенти. При топ 30% обхващам 37, а увеличаването до 40% добавя още седем положителни отговора с още 20 контакта. Затова 30% е балансирана отправна точка за пилот, а не математически доказан максимум на печалбата.</p></section>
+    <section id="recommendations" class="report-section"><div class="report-kicker">08 / Практическо приложение</div><h2>Маркетингови препоръки</h2><ol><li><strong>Допустима аудитория.</strong> Първо се проверяват основанието за контакт, комуникационните предпочитания и отказите. В прогнозата не се използва <code>customer_id</code>.</li><li><strong>Актуални характеристики.</strong> Преди кампанията всички седем предиктора следва да бъдат налични и измерени към валиден момент преди отправяне на офертата.</li><li><strong>Начална приоритизация.</strong> Клиентите се подреждат по прогнозната вероятност и се избира топ 30% като изходен сценарий.</li><li><strong>Контролирана проверка.</strong> Използва се пилот с контролна група, реални разходи и маржове. Измерват се допълнителни поръчки, приходи, откази и възвръщаемост.</li><li><strong>Наблюдение във времето.</strong> Следи се дали AUC, calibration и response rate се запазват при нови кампании.</li></ol></section>
+    <section id="limitations" class="report-section"><div class="report-kicker">09 / Ограничения</div><h2>Какво анализът не доказва</h2><ul><li><strong>Времева валидност:</strong> липсват доказателства, че всички предиктори са измерени преди предходната оферта. При реална интеграция е необходим времеви контрол срещу leakage.</li><li><strong>Икономически оптимум:</strong> не разполагам с реална цена на контакт, марж или бюджет. Затова обхватът 30% е сценарий, не доказан максимален ROI.</li><li><strong>Причинност:</strong> нямам рандомизирана контролна група. Прогнозата за положителен отговор не измерва кой би купил допълнително заради кампанията.</li></ul><p>Оценката от един-единствен test split също може да се променя при друга извадка; затова използвам cross-validation върху обучаващата част и bootstrap интервал за тестовата разлика.</p></section>
+    <section id="reproduction" class="report-section"><div class="report-kicker">10 / Възпроизводимост и код</div><h2>Проверете резултатите сами</h2><p>В интерактивната версия всяка аналитична стъпка има собствен бутон за изпълнение и преглед на действителния Python код. Всички изчисления използват CSV файла, включен в хранилището. Основните настройки са фиксирани: <code>random_state=42</code>, тестова извадка 25%, пет сгъвки за cross-validation и праг 0,50 за класификационните показатели.</p><div class="verifier"><h3>Проверка на оригиналните резултати</h3><p>Натиснете бутона, за да стартирате шестте глави на Python в Vercel и да сравните AUC и обхвата с изследването. Това е реално изпълнение на модела, не анимация.</p><button id="verify" type="button">▶ Изпълни и провери всички глави</button><div id="verify-output" role="status" aria-live="polite"></div></div><div class="report-links"><a href="/">Интерактивна курсова ↗</a><a href="/presentation.html">Презентация ↗</a><a href="https://github.com/Egeorgievbg/ShopDirect/blob/main/api/run.py" target="_blank" rel="noopener noreferrer">Python source ↗</a><a href="https://github.com/Egeorgievbg/ShopDirect/blob/main/P3_1_252042_Analysis.ipynb" target="_blank" rel="noopener noreferrer">Изпълнен Notebook ↗</a><a href="https://github.com/Egeorgievbg/ShopDirect/blob/main/data/P3_1_campaign_response.csv" target="_blank" rel="noopener noreferrer">Учебният CSV ↗</a></div></section>
+    <section id="references" class="report-section"><div class="report-kicker">Източници</div><h2>Библиография и използвани материали</h2><ol>
+      <li>Преподавателски набор данни <em>P3_1_campaign_response.csv</em>, ShopDirect P3.1 (предоставен за задачата, 2026).</li>
+      <li>scikit-learn developers. <a href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression" target="_blank" rel="noopener noreferrer">Linear Models — Logistic Regression</a> (официална документация).</li>
+      <li>scikit-learn developers. <a href="https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees" target="_blank" rel="noopener noreferrer">Ensemble Methods — Random Forest</a> (официална документация).</li>
+      <li>scikit-learn developers. <a href="https://scikit-learn.org/stable/modules/cross_validation.html" target="_blank" rel="noopener noreferrer">Cross-validation: evaluating estimator performance</a>.</li>
+      <li>scikit-learn developers. <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener noreferrer">Metrics and scoring: quantifying the quality of predictions</a>.</li>
+      <li>scikit-learn developers. <a href="https://scikit-learn.org/stable/modules/calibration.html" target="_blank" rel="noopener noreferrer">Probability calibration</a>.</li>
+    </ol><p class="note">Източниците са за методологията и интерпретацията. Всички числови резултати в доклада са изчислени от предоставения CSV, а не са взети от външни публикации.</p></section>
+  </article>
+</div>
+<footer class="report-footer">ShopDirect P3.1 · Илияна Цанова · Маркетинг · фак. № 252042 · 2026</footer>
+<script>
+document.getElementById("print").addEventListener("click",()=>window.print());
+document.getElementById("verify").addEventListener("click",async function(){
+  const target=document.getElementById("verify-output");this.disabled=true;
+  target.textContent="Изпълняват се шестте Python глави…";
+  try{
+    const res=await fetch("/api/run",{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({step:"all"}),cache:"no-store"});
+    const body=await res.json();
+    if(!res.ok)throw Error(body.error||"HTTP "+res.status);
+    const result=body.result,log=result.logistic.metrics.test_auc,forest=result.forest.metrics.test_auc;
+    const chosen=result.targeting.scenarios.find(x=>x.share===.3);
+    const same=Math.abs(log-.7741971958389868)<.000001 &&
+      Math.abs(forest-.7558796924468567)<.000001 &&
+      chosen.contacts===60 && chosen.historical_yes===37;
+    target.textContent=(same?"✓ УСПЕШНА ВЪЗПРОИЗВОДИМОСТ":"⚠ ПРОВЕРЕТЕ ОТКЛОНЕНИЯТА")+
+      "\nLogistic AUC: "+log.toFixed(6)+"; Forest AUC: "+forest.toFixed(6)+
+      "\nТоп 30%: "+chosen.contacts+" контакта, "+chosen.historical_yes+
+      " положителни отговора.\nВреме: "+body.elapsed_seconds+" s.";
+  }catch(error){target.textContent="Грешка: "+error.message}
+  finally{this.disabled=false}
+});
+</script>
+</body>
+</html>

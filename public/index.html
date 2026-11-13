@@ -1,262 +1,185 @@
 <!doctype html>
 <html lang="bg">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101d2d">
-  <meta name="description" content="ShopDirect Research Lab — възпроизводим маркетингов анализ, сравнение на модели и интерактивно таргетиране.">
-  <title>ShopDirect — Marketing Intelligence Lab | P3.1</title>
-  <style>
-    :root{--ink:#122234;--muted:#667582;--surface:#f8f9f7;--white:#fff;--line:#dce5e2;--teal:#176c67;--lime:#d3ee9a;--amber:#deb578;--dark:#101d2d;--accent:#167d72;--radius:18px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--surface);color:var(--ink);font:15px/1.6 Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}a:hover{text-decoration:underline}svg{max-width:100%}
-    .shell{max-width:1260px;margin:0 auto;padding:0 40px}.topbar{background:var(--dark);color:#fff;border-bottom:1px solid #354457}.nav{display:flex;justify-content:space-between;align-items:center;gap:25px;height:75px}.brand{display:flex;align-items:center;gap:12px;font-weight:750;letter-spacing:-.06em;font-size:22px}.brandmark{display:grid;place-items:center;width:32px;height:32px;border-radius:8px;background:var(--lime);color:var(--dark);font-size:16px;letter-spacing:-.07em}.nav-links{display:flex;align-items:center;gap:25px;font-size:12px;color:#c5d3d7}.nav-links a:hover{color:white}.nav-label{border:1px solid #566671;color:#d5e3dc;border-radius:40px;padding:6px 12px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
-    .hero{background:var(--dark);color:#f5f6f3;padding:78px 0 76px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:680px;height:680px;right:-260px;top:-320px;border-radius:50%;border:1px solid #294050;box-shadow:0 0 0 65px rgba(85,110,120,.035),0 0 0 145px rgba(85,110,120,.035),0 0 0 230px rgba(85,110,120,.035);pointer-events:none}.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(290px,.8fr);gap:65px;align-items:center;position:relative;z-index:1}.eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:750}.eyebrow.light{color:var(--lime)}.eyebrow.dark{color:var(--teal)}.hero h1{font-family:Georgia,Palatino,serif;font-weight:400;line-height:1.06;letter-spacing:-.045em;font-size:clamp(46px,6vw,82px);max-width:760px;margin:20px 0 22px}.hero h1 em{font-style:normal;color:var(--lime)}.lead{color:#afc1c5;font-size:16px;max-width:570px;line-height:1.8}.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:32px 0}.btn{border-radius:10px;padding:12px 19px;display:inline-flex;justify-content:center;gap:8px;align-items:center;font-weight:700;font-size:13px;border:1px solid transparent}.btn-primary{background:var(--lime);color:var(--dark)}.btn-primary:hover{background:#e3f7bb;text-decoration:none}.btn-ghost{background:transparent;border-color:#65767c;color:#e5eeea}.btn-ghost:hover{border-color:#f0f6ec;text-decoration:none}.hero-note{font-size:11px;color:#7f9ba5;margin-top:20px}.hero-panel{padding:28px;border:1px solid #354b53;background:linear-gradient(145deg,rgba(31,57,67,.92),rgba(16,29,45,.9));border-radius:20px;box-shadow:0 28px 45px #09121e55}.panel-top{display:flex;justify-content:space-between;align-items:center;font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:#aac3c1}.live-dot{width:7px;height:7px;background:var(--lime);display:inline-block;border-radius:50%;margin-right:7px;box-shadow:0 0 0 5px #d3ee9a12}.hero-value{font:400 86px/1 Georgia,serif;letter-spacing:-.06em;color:var(--lime);margin:35px 0 4px}.hero-panel p{color:#b4c5c5;margin:0;font-size:12px}.panel-bars{margin:32px 0 14px;display:grid;gap:12px}.panel-bar{display:flex;gap:12px;align-items:center;color:#cfdddf;font-size:12px}.panel-bar>span{width:90px}.track{flex:1;background:#33434c;height:7px;border-radius:20px;overflow:hidden}.track i{display:block;background:var(--lime);height:100%;border-radius:20px}.panel-footer{border-top:1px solid #3c5057;margin-top:22px;padding-top:18px;display:flex;justify-content:space-between;color:#8fa6b0;font-size:11px}
-    .kpis{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:17px;background:#fff;overflow:hidden;margin:38px auto 0}.kpi{padding:28px 25px;border-right:1px solid var(--line)}.kpi:last-child{border:0}.kpi-label{font-size:11px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:750}.kpi-val{font:400 42px/1.2 Georgia,serif;letter-spacing:-.04em;margin:12px 0 3px}.kpi-foot{font-size:12px;color:#819091}
-    main{padding-bottom:90px}.section{padding-top:90px;scroll-margin-top:22px}.section-heading{display:flex;justify-content:space-between;gap:40px;align-items:flex-end;margin-bottom:27px}.section h2{font:400 clamp(32px,3.9vw,49px)/1.13 Georgia,serif;letter-spacing:-.04em;margin:10px 0 0}.section-sub{max-width:440px;color:var(--muted);font-size:14px}.grid-two{display:grid;grid-template-columns:1fr 1fr;gap:20px}.grid-thirds{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid var(--line);background:var(--white);border-radius:var(--radius);padding:28px}.card h3{font-size:17px;margin:0 0 6px;letter-spacing:-.025em}.card small,.caption{color:var(--muted);font-size:12px}.card p{font-size:13px;color:#596b76}.measure-row{margin-top:25px;display:grid;gap:19px}.measure-label{display:flex;justify-content:space-between;gap:15px;margin-bottom:6px;font-size:12px}.measure{background:#ebf1ee;border-radius:12px;height:12px;overflow:hidden}.measure div{background:var(--teal);height:100%;border-radius:12px}.measure.secondary div{background:#d8b276}.insight{padding:20px 22px;border-left:3px solid var(--teal);background:#eaf2ed;border-radius:0 12px 12px 0;font-size:13px;color:#344c4c;margin-top:19px}.insight strong{color:var(--dark)}
-    .model-compare{display:flex;align-items:stretch;gap:17px}.model-box{flex:1;border-radius:13px;padding:25px;border:1px solid #d9e5e2}.model-box.chosen{background:#ecf5f0;border-color:#b4d1c2}.model-box .auc{font:400 52px Georgia,serif;letter-spacing:-.05em;margin:7px 0}.model-box .small{color:#607575;font-size:12px}.tag{display:inline-block;border-radius:50px;background:#d5e9de;color:#11685b;padding:3px 9px;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}.model-chart{display:grid;gap:16px;margin-top:22px}.model-chart .chartline{display:grid;grid-template-columns:130px 1fr 42px;align-items:center;gap:14px;font-size:12px}.model-chart .chartline i{display:block;background:var(--teal);height:17px;border-radius:4px}.model-chart .chartline:nth-child(2) i{background:#9dbcb7}.divider{height:1px;background:var(--line);margin:27px 0}.figure-note{font-size:12px;color:#61737c;margin-top:15px}.chart-wrap{height:245px;display:flex;align-items:center;justify-content:center;overflow:hidden}#roc-chart{width:100%;height:250px}.roc-placeholder{color:#647783;border:1px dashed #bdcfcd;background:#f5f8f6;border-radius:14px;padding:30px;text-align:center;font-size:13px;max-width:90%}
-    .simulator{background:var(--dark);color:white;border-radius:22px;padding:33px}.simhead{display:flex;justify-content:space-between;align-items:center;gap:14px}.simulator h3{font:400 31px Georgia,serif;margin:8px 0 7px}.simulator p{color:#a8c0c1}.range-wrap{margin:28px 0}input[type=range]{width:100%;accent-color:#cceca1}.range-labels{display:flex;justify-content:space-between;color:#78989e;font-size:11px}.sim-results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.sim-metric{border:1px solid #35505a;padding:20px;border-radius:13px}.sim-metric b{display:block;color:var(--lime);font:400 36px Georgia,serif;margin-bottom:6px}.sim-metric small{color:#b3cbca}
-    .upload-zone{border:1px dashed #95afa9;background:#f6faf7;border-radius:16px;padding:30px;display:flex;align-items:center;gap:20px;cursor:pointer}.upload-icon{width:50px;height:50px;border:1px solid #b7d5c6;border-radius:50%;display:grid;place-items:center;font-size:25px;color:var(--teal);flex:none}.upload-zone strong{display:block}.upload-zone input{display:none}.upload-zone:hover{background:#edf7f0}.status{border-radius:12px;background:#eaf0ec;color:#264d42;font-size:12px;padding:13px 15px;margin-top:17px}.status.error{color:#933a30;background:#fce9e5}.status.running{color:#55606b;background:#f2f3ee}.actions{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:18px}.btn-dark{background:var(--teal);color:white}.btn-dark[disabled]{background:#a4b8b1;cursor:not-allowed}.btn-dark:hover:not([disabled]){background:#105850}.source-links{display:flex;gap:11px;flex-wrap:wrap}.source-links a{font-size:12px;color:var(--teal);border:1px solid #bbd4ca;border-radius:8px;padding:10px 12px}.footnote{font-size:12px;color:#71818b}.steps{counter-reset:step;display:grid;gap:12px}.step{display:flex;gap:15px;padding:17px;border-radius:12px;background:#f6f8f6}.step:before{counter-increment:step;content:"0" counter(step);color:var(--teal);font-weight:800;letter-spacing:.1em}.step strong{display:block}.step span{font-size:12px;color:var(--muted)}.table-scroll{overflow-x:auto}.data-table{width:100%;border-collapse:collapse;font-size:12px;min-width:550px}.data-table th{text-align:left;text-transform:uppercase;letter-spacing:.08em;font-size:10px;color:#62727a;border-bottom:1px solid var(--line);padding:14px 8px}.data-table td{border-bottom:1px solid #e9eeeb;padding:12px 8px}.data-table tbody tr:last-child td{border-bottom:0}.data-table tr.active td{color:var(--teal);font-weight:800;background:#eff7f3}.footer{background:var(--dark);color:#a0b6b9;padding:35px 0;font-size:12px}.footerline{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.footer b{color:#fff}.hide{display:none!important}
-    @media(max-width:1000px){.hero-grid{gap:30px}.shell{padding:0 25px}.nav-links{gap:12px}.nav-links a:nth-child(2),.nav-links a:nth-child(3){display:none}.kpi{padding:19px}.kpi-val{font-size:34px}}
-    @media(max-width:730px){.shell{padding:0 18px}.nav{height:62px}.nav-links a{display:none}.brand{font-size:19px}.hero{padding:56px 0}.hero-grid,.grid-two,.grid-thirds{grid-template-columns:1fr}.hero h1{font-size:52px}.hero-panel{max-width:500px}.kpis{grid-template-columns:repeat(2,1fr)}.kpi:nth-child(2){border-right:0}.kpi:nth-child(-n+2){border-bottom:1px solid var(--line)}.section{padding-top:62px}.section-heading{display:block}.section-sub{margin-top:12px}.sim-results{grid-template-columns:1fr}.sim-metric{display:flex;align-items:center;justify-content:space-between}.sim-metric b{margin:0}.model-compare{display:block}.model-box+.model-box{margin-top:12px}.model-chart .chartline{grid-template-columns:95px 1fr 42px}.card{padding:20px}.hero-value{font-size:72px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  </style>
+  <meta name="theme-color" content="#0e2220">
+  <meta name="description" content="Курсова работа P3.1 на Илияна Цанова — персонализирано таргетиране в ShopDirect с реални Python изчисления, интерактивни графики и проверим изходен код.">
+  <title>Кому да предложим? — Илияна Цанова · ShopDirect P3.1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
 </head>
 <body>
-<header class="topbar">
-  <div class="shell nav">
-    <a class="brand" href="#start" aria-label="ShopDirect, начало"><span class="brandmark">SD</span>ShopDirect<span style="font-weight:400;color:#91a9ad"> / Lab</span></a>
-    <nav class="nav-links" aria-label="Основна навигация"><a href="#insights">Данни</a><a href="#models">Модели</a><a href="#targeting">Таргетиране</a><a href="#lab">Live Python</a><span class="nav-label">P3.1 · Research Edition</span></nav>
-  </div>
-</header>
-<section class="hero" id="start">
-  <div class="shell hero-grid">
-    <div>
-      <div class="eyebrow light">Marketing intelligence · академичен проект P3.1</div>
-      <h1>По-точна аудитория.<br><em>По-смислена кампания.</em></h1>
-      <p class="lead">Кои клиенти биха отговорили на следващата персонализирана оферта? Превръщаме 800 исторически записа в прозрачно маркетингово решение — и показваме как точно е изчислено.</p>
-      <div class="hero-actions"><a class="btn btn-primary" href="#lab">Изпълни анализа <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="#targeting">Разгледай стратегията</a></div>
-      <div class="hero-note">Илияна Цанова · фак. № 252042 · специалност „Маркетинг“ · 2026</div>
-    </div>
-    <aside class="hero-panel" aria-label="Водещ резултат от анализа">
-      <div class="panel-top"><span>Основен извод / 01</span><span><i class="live-dot"></i>Проверен исторически тест</span></div>
-      <div class="hero-value">1,87×</div>
-      <p>По-висок дял положителни отговори при най-високо ранжираните 30% от клиентите в тестовата извадка.</p>
-      <div class="panel-bars">
-        <div class="panel-bar"><span>Топ 30%</span><div class="track"><i style="width:61.7%"></i></div><b>61,7%</b></div>
-        <div class="panel-bar"><span>Всички</span><div class="track"><i style="width:33% ;background:#6b8b90"></i></div><b>33,0%</b></div>
+  <div class="read-progress" id="read-progress" aria-hidden="true"><span></span></div>
+  <a href="#main" class="skip-link">Към съдържанието</a>
+  <header class="site-header" id="site-header">
+    <div class="nav-wrap">
+      <a href="#cover" class="logo" aria-label="Начало на ShopDirect P3.1">
+        <span class="logo-symbol">s<span class="logo-dot">.</span></span>
+        <span class="logo-text">shopdirect<span class="logo-tiny">/research</span></span>
+      </a>
+      <nav class="nav-center" aria-label="Основна навигация">
+        <a href="#question">Въведение</a>
+        <a href="#chapter-quality">Анализ</a>
+        <a href="#chapter-comparison">Модели</a>
+        <a href="#chapter-targeting">Решение</a><a href="/presentation.html">Презентация</a>
+      </nav>
+      <div class="nav-right">
+        <span class="nav-online"><i></i> Python Lab</span>
+        <button class="nav-pill" id="nav-run-all" type="button"><span class="play-small">▶</span> Изпълни всичко</button>
+        <button class="nav-menu" id="nav-menu" type="button" aria-label="Отвори навигация" aria-controls="mobile-nav" aria-expanded="false">☰</button>
       </div>
-      <div class="panel-footer"><span>Тестова извадка: n = 200</span><span>Без причинни твърдения</span></div>
-    </aside>
-  </div>
-</section>
-<main class="shell">
-  <div class="kpis" aria-label="Основни резултати">
-    <div class="kpi"><div class="kpi-label">Клиентски наблюдения</div><div class="kpi-val" id="stat-n">800</div><div class="kpi-foot">исторически набор</div></div>
-    <div class="kpi"><div class="kpi-label">Положителен отговор</div><div class="kpi-val" id="stat-response">33%</div><div class="kpi-foot">264 от 800 клиента</div></div>
-    <div class="kpi"><div class="kpi-label">Logistic AUC</div><div class="kpi-val" id="stat-auc">0,774</div><div class="kpi-foot">независим тест</div></div>
-    <div class="kpi"><div class="kpi-label">Препоръчан обхват</div><div class="kpi-val">30%</div><div class="kpi-foot">работна хипотеза</div></div>
-  </div>
-  <section id="insights" class="section">
-    <div class="section-heading"><div><div class="eyebrow dark">01 / Исторически данни</div><h2>Поведение зад отговора</h2></div><div class="section-sub">Използваме единствено предоставените от преподавателя данни. Изводите от описателните групи не доказват причинна зависимост.</div></div>
-    <div class="grid-two">
-      <article class="card">
-        <h3>Членство в програмата за лоялност</h3>
-        <small>Исторически дял положителен отговор по групи</small>
-        <div class="measure-row">
-          <div><div class="measure-label"><span>Членове на програмата</span><b id="loyal-yes">42,5%</b></div><div class="measure"><div id="loyal-yes-bar" style="width:42.5%"></div></div></div>
-          <div><div class="measure-label"><span>Без членство</span><b id="loyal-no">25,1%</b></div><div class="measure secondary"><div id="loyal-no-bar" style="width:25.1%"></div></div></div>
-        </div>
-        <div class="insight"><strong>Интерпретация:</strong> членовете отговарят по-често, но лоялността не е достатъчна сама по себе си за избор на аудитория.</div>
-      </article>
-      <article class="card">
-        <h3>Посещения на сайта през 30 дни</h3><small>Дял положителни отговори по четири групи (Q1–Q4)</small>
-        <div class="measure-row" id="visits-bars">
-          <div><div class="measure-label"><span>Q1 · Най-малко посещения</span><b>19,0%</b></div><div class="measure"><div style="width:19%"></div></div></div>
-          <div><div class="measure-label"><span>Q2</span><b>27,0%</b></div><div class="measure"><div style="width:27%"></div></div></div>
-          <div><div class="measure-label"><span>Q3</span><b>37,5%</b></div><div class="measure"><div style="width:37.5%"></div></div></div>
-          <div><div class="measure-label"><span>Q4 · Най-много посещения</span><b>48,5%</b></div><div class="measure"><div style="width:48.5%"></div></div></div>
-        </div>
-        <p>По-интензивната активност е свързана с по-висок response rate в тази база.</p>
-      </article>
     </div>
-  </section>
-  <section id="models" class="section">
-    <div class="section-heading"><div><div class="eyebrow dark">02 / Машинно обучение</div><h2>Два модела. Едно решение.</h2></div><div class="section-sub">Сравнението използва еднакво стратифицирано разделяне 75/25 и 5-кратна кръстосана проверка само върху обучаващите данни.</div></div>
-    <div class="grid-two">
-      <article class="card">
-        <h3>Сравнение по ROC AUC</h3><small>По-висока стойност означава по-добро разграничаване на двата класа</small>
-        <div class="model-compare" style="margin-top:21px">
-          <div class="model-box chosen"><span class="tag">Практически избор</span><div class="auc" id="log-auc">0,774</div><div class="small">Логистична регресия</div></div>
-          <div class="model-box"><span class="tag" style="background:#e8eeec;color:#647a7d">Алтернатива</span><div class="auc" id="forest-auc">0,756</div><div class="small">Random Forest</div></div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Мобилна навигация" hidden>
+      <a href="#question">Въведение</a><a href="#chapter-quality">Данни</a>
+      <a href="#chapter-logistic">Модели</a><a href="#chapter-targeting">Таргетиране</a>
+      <a href="#final">Изводи и източници</a><a href="/presentation.html">Онлайн презентация</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="cover" id="cover">
+      <div class="cover-noise"></div>
+      <div class="cover-layout wrap">
+        <div class="cover-copy">
+          <div class="overline cover-eyebrow"><span class="fine-line"></span> Курсова работа · Проект P3.1 / Модули 06–07</div>
+          <h1>Кому да<br><em>предложим</em><span class="question-mark">?</span></h1>
+          <p class="cover-lede">Моделиране на вероятността за положителен отговор и избор на клиенти за следваща персонализирана оферта в онлайн магазин ShopDirect.</p>
+          <div class="cover-actions">
+            <a class="btn btn-lime" href="#question">Разгледай изследването <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-outline-light" href="/report.html">Прочети цялата курсова <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-        <div class="model-chart">
-          <div class="chartline"><span>Logistic AUC</span><div class="measure"><i id="log-auc-bar" style="width:77.4%"></i></div><b>0,774</b></div>
-          <div class="chartline"><span>Forest AUC</span><div class="measure"><i id="forest-auc-bar" style="width:75.6%"></i></div><b>0,756</b></div>
+        <div class="cover-art" aria-hidden="true">
+          <svg viewBox="0 0 630 620" class="orbit-illustration">
+            <defs>
+              <radialGradient id="orbfill"><stop offset="0" stop-color="#d9f1b0" stop-opacity=".21"/><stop offset="1" stop-color="#d9f1b0" stop-opacity="0"/></radialGradient>
+              <linearGradient id="orbline" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#aee48a" stop-opacity=".6"/><stop offset="1" stop-color="#84ada0" stop-opacity=".1"/></linearGradient>
+            </defs>
+            <circle cx="315" cy="312" r="284" fill="url(#orbfill)"/>
+            <circle cx="315" cy="312" r="235" stroke="#b5d6b8" opacity=".12" fill="none"/>
+            <circle cx="315" cy="312" r="192" stroke="#b5d6b8" opacity=".22" fill="none"/>
+            <circle cx="315" cy="312" r="145" stroke="#b5d6b8" opacity=".3" fill="none"/>
+            <circle cx="315" cy="312" r="95" stroke="#b5d6b8" opacity=".22" fill="none"/>
+            <path d="M94 384C159 440 237 460 303 407S438 243 526 280" fill="none" stroke="#d2f79e" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+            <path d="M100 428C197 360 247 348 304 355S440 423 530 337" fill="none" stroke="#afcbbf" stroke-width="1.2" opacity=".4" stroke-dasharray="5 10"/>
+            <g id="orbit-points"></g>
+            <circle cx="315" cy="312" r="40" fill="#c9efa4"/><circle cx="315" cy="312" r="32" fill="#0d2723"/>
+            <text x="315" y="320" fill="#d7f5b5" text-anchor="middle" font-size="25" font-family="Georgia">P3.1</text>
+            <text x="456" y="108" fill="#cceab0" font-size="15" letter-spacing="2">800 ОБЕКТА</text>
+            <text x="75" y="520" fill="#cceab0" font-size="13" letter-spacing="2">01 / 06</text>
+            <circle cx="526" cy="280" r="7" fill="#d8ff93"/><circle cx="526" cy="280" r="19" stroke="#d8ff93" fill="none" opacity=".4"/>
+          </svg>
+          <div class="orbit-caption"><span class="live-pulse"></span> Исторически данни · 800 наблюдения</div>
         </div>
-        <p>Разликата в AUC е малка. Предпочитанието се основава на съчетание от резултати и интерпретируемост, а не на доказано превъзходство.</p>
-      </article>
-      <article class="card">
-        <h3>ROC — реално генерирана крива</h3><small>Кривите се получават от независимия тест при Python изпълнение.</small>
-        <div class="chart-wrap"><div id="roc-placeholder" class="roc-placeholder">Качете оригиналния CSV в Live Python Lab, за да генерирате ROC кривите от действителното изпълнение на моделите.</div><svg class="hide" id="roc-chart" viewBox="0 0 500 260" role="img" aria-label="ROC криви за двата модела"></svg></div>
-        <div class="figure-note">Пунктираната диагонална линия представлява случайно класифициране (AUC = 0,5).</div>
-      </article>
-    </div>
-  </section>
-  <section id="targeting" class="section">
-    <div class="section-heading"><div><div class="eyebrow dark">03 / Управленско решение</div><h2>Кои клиенти да изберем?</h2></div><div class="section-sub">Тестваме различни размери на аудиторията според подредбата по прогнозна вероятност. Изборът на 30% е сценарий при ограничен ресурс, не доказан финансов оптимум.</div></div>
-    <div class="grid-two">
-      <div class="simulator">
-        <div class="simhead"><div><div class="eyebrow light">Interactive targeting simulator</div><h3>Настройте аудиторията</h3></div><span class="tag" style="color:#233b30">Тестови данни</span></div>
-        <p>Изберете какъв дял от най-високо ранжираните клиенти да получат офертата.</p>
-        <div class="range-wrap"><label for="share" style="display:block;margin-bottom:10px">Дял на таргетираните: <strong style="color:var(--lime);font-size:25px" id="share-value">30%</strong></label><input id="share" type="range" min="20" max="40" step="10" value="30"><div class="range-labels"><span id="share-min">20%</span><span id="share-max">40%</span></div></div>
-        <div class="sim-results">
-          <div class="sim-metric"><b id="sim-selected">60</b><small>Клиенти в теста</small></div>
-          <div class="sim-metric"><b id="sim-rate">61,7%</b><small>Исторически response rate</small></div>
-          <div class="sim-metric"><b id="sim-lift">1,87×</b><small>Lift спрямо общата извадка</small></div>
-        </div>
-        <p style="font-size:12px;margin:24px 0 0">Обхванати положителни отговори: <b style="color:var(--lime)" id="sim-capture">56,1%</b>. Резултатите са ретроспективна оценка, не прогноза за реална печалба.</p>
       </div>
-      <article class="card"><h3>Сценарии за избор</h3><small>Независим тест: 200 клиента, общо 66 положителни отговора</small><div class="table-scroll"><table class="data-table"><thead><tr><th>Обхват</th><th>Брой</th><th>Yes</th><th>Response</th><th>Lift</th></tr></thead><tbody id="scenario-rows"><tr><td>20%</td><td>40</td><td>31</td><td>77,5%</td><td>2,35×</td></tr><tr class="active"><td>30%</td><td>60</td><td>37</td><td>61,7%</td><td>1,87×</td></tr><tr><td>40%</td><td>80</td><td>44</td><td>55,0%</td><td>1,67×</td></tr></tbody></table></div><div class="insight">Изборът на топ 30% обхваща <strong>37 от 66</strong> исторически положителни отговора при <strong>60 контакта</strong> в тестовия набор.</div><p>За реална кампания следва да се отчетат марж, цена на контакт, съгласия за комуникация и резултати от контролиран пилот.</p></article>
-    </div>
-  </section>
-  <section id="lab" class="section">
-    <div class="section-heading"><div><div class="eyebrow dark">04 / Научна възпроизводимост</div><h2>Проверете кода. Изпълнете анализа.</h2></div><div class="section-sub">Тук действително се стартира Python със scikit-learn. Преподавателят може да използва оригиналния CSV, без той да бъде публикуван в хранилището.</div></div>
-    <div class="grid-two">
-      <article class="card">
-        <h3>Live Python Lab <span class="tag" style="margin-left:5px">Experimental</span></h3>
-        <p>Изберете <b>P3_1_campaign_response.csv</b>. Файлът се валидира локално; изпраща се само при натискане на бутона. Не се съхранява в базата на приложението.</p>
-        <label class="upload-zone" for="csv-file"><span class="upload-icon" aria-hidden="true">↑</span><span><strong id="filename">Избери преподавателския CSV файл</strong><small>CSV · до 1 MB · между 100 и 2000 записа</small></span><input type="file" id="csv-file" accept=".csv,text/csv"></label>
-        <div id="upload-status" class="status" role="status">Файлът още не е зареден. Използват се референтните резултати от курсовата работа.</div>
-        <div class="actions"><button class="btn btn-dark" id="run-btn" type="button" disabled>Изпълни Python анализ ↗</button><a class="btn" style="border:1px solid #c8d9d1" href="https://github.com/Egeorgievbg/ShopDirect/blob/main/api/run.py" target="_blank" rel="noopener noreferrer">Виж Python кода</a></div>
-        <p class="footnote">Изпълнението може да отнеме време при първо стартиране. Сървърът не приема произволен Python код. Външният ресурс е ограничен до фиксиран анализ на предоставена схема.</p>
-      </article>
-      <article class="card">
-        <h3>Прозрачна методология</h3><small>Всички числови резултати могат да се преизчислят</small>
-        <div class="steps" style="margin-top:21px">
-          <div class="step"><div><strong>Проверка на входа</strong><span>Валидиране на схема, липсващи стойности и уникални ID</span></div></div>
-          <div class="step"><div><strong>Разделяне на извадката</strong><span>75% обучение / 25% тест · stratified · random_state=42</span></div></div>
-          <div class="step"><div><strong>Обучаване и оценка</strong><span>Pipeline · 5-fold CV · Logistic Regression · Random Forest</span></div></div>
-          <div class="step"><div><strong>Таргетиране и сравнение</strong><span>ROC AUC · Sensitivity · Specificity · Lift · Capture</span></div></div>
+      <div class="cover-bottom wrap">
+        <div class="author-credit"><span class="cover-small">Разработила</span><strong>Илияна Цанова</strong><span class="cover-small">Маркетинг · Фак. № 252042</span></div>
+        <a class="scroll-indicator" href="#question"><span>SCROLL TO EXPLORE</span><span class="scroll-arrow">↓</span></a>
+        <div class="academic-meta"><span>Python / scikit-learn</span><span>2026</span></div>
+      </div>
+    </section>
+
+    <section class="intro-section chapter-anchor" id="question">
+      <div class="wrap">
+        <div class="section-meta"><span>00 / УПРАВЛЕНСКИ ВЪПРОС</span><span>ОТ ПРОБЛЕМ КЪМ РЕШЕНИЕ</span></div>
+        <div class="intro-grid">
+          <div><span class="marker">Изследователска постановка</span><h2 class="display">Не всички<br>клиенти са<br><em>еднакви.</em></h2></div>
+          <div class="intro-aside">
+            <p class="intro-lead">Ако маркетинговият бюджет позволява контакт само с част от клиентите, <strong>как да изберем хората с най-висока вероятност да отговорят?</strong></p>
+            <p>ShopDirect разполага с данни за клиентско поведение и за реакцията на предходна промоционална оферта. Целта не е да изпратим повече съобщения, а да използваме наличната информация за по-аргументиран избор.</p>
+            <div class="thesis-statement"><span class="thesis-icon">↳</span> В този проект изграждам логистична регресия и Random Forest, сравнявам прогнозите им върху една и съща тестова извадка и предлагам правило за избор на целева група.</div>
+            <a href="#chapter-quality" class="inline-link">Започни от данните <span>↗</span></a>
+          </div>
         </div>
-        <div class="divider"></div>
-        <div class="source-links"><a href="https://github.com/Egeorgievbg/ShopDirect/tree/main" target="_blank" rel="noopener noreferrer">GitHub хранилище ↗</a><a href="/api/run" target="_blank" rel="noopener noreferrer">API status ↗</a></div>
-        <div id="runtime-result" class="status hide" role="status"></div>
-      </article>
+        <div class="stat-ribbon">
+          <div><small>Общо наблюдения</small><strong>800</strong><span>клиенти</span></div>
+          <div><small>Положителен отговор</small><strong>33<span>%</span></strong><span>264 от 800</span></div>
+          <div><small>Обучение / тест</small><strong>75 / 25</strong><span>стратифицирано</span></div>
+          <div><small>Сравнявани модела</small><strong>02</strong><span>класификационни</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="research-surface">
+      <div class="research-intro wrap"><div class="section-meta"><span>RESEARCH / EXECUTION</span><span>PYTHON, РЕАЛНО ИЗПЪЛНЕНИЕ</span></div><div class="research-intro-row"><h2>Изследването,<br><em>стъпка по стъпка.</em></h2><p>Всяка глава съдържа аргументация, действителния Python код и отделен бутон за изпълнение. Всички резултати се изчисляват от вградения CSV на сървъра — без ръчно качване на файл.</p></div></div>
+      <div class="reading-rail" aria-label="Навигация по глави">
+        <div class="rail-sticky">
+          <span class="rail-eyebrow">СЪДЪРЖАНИЕ</span>
+          <a href="#chapter-quality" data-rail="quality"><i>01</i> Данни</a>
+          <a href="#chapter-patterns" data-rail="patterns"><i>02</i> Зависимости</a>
+          <a href="#chapter-logistic" data-rail="logistic"><i>03</i> Logistic</a>
+          <a href="#chapter-forest" data-rail="forest"><i>04</i> Random Forest</a>
+          <a href="#chapter-comparison" data-rail="comparison"><i>05</i> Сравнение</a>
+          <a href="#chapter-targeting" data-rail="targeting"><i>06</i> Таргетиране</a>
+          <a href="#final" data-rail="final"><i>07</i> Изводи</a>
+        </div>
+      </div>
+      <div class="chapters wrap">
+        <section class="chapter chapter-anchor" id="chapter-quality" data-chapter="quality">
+          <div class="chapter-head"><span class="index">01 <span>/ 06</span></span><div><div class="eyebrow dark">ДАННИ И ПРОВЕРКА</div><h2>Първо — <em>познавай данните.</em></h2></div></div>
+          <div class="chapter-body">
+            <div class="chapter-explain"><p class="chapter-lead">Анализът започва с проверка на 800-те записа: липсващи стойности, уникалност на идентификаторите, разпределение на отговорите и описателни показатели.</p><p>Тази проверка е необходима, за да не интерпретираме погрешна структура или липсващи стойности като реално клиентско поведение.</p><div class="method-note"><span>МЕТОДОЛОГИЯ</span><p>За всички седем предиктора използвам средна стойност, медиана, стандартно отклонение и минимум/максимум. Целта <code>response</code> е двоична: Yes = 1, No = 0.</p></div></div>
+            <div class="execute-card" data-panel="quality"><div class="execute-top"><span><i class="python-dot"></i> Python · Chapter 01</span><span class="execution-state" data-state="quality">Готово за изпълнение</span></div><div class="result-stage" id="result-quality"><div class="mini-metrics"><div><span>Записи</span><strong>800</strong></div><div><span>Yes</span><strong>264</strong></div><div><span>Липсващи</span><strong>0</strong></div></div><p class="preview-caption">Референтни стойности от оригиналния анализ. Изпълни главата, за да ги преизчислиш.</p></div><div class="execute-actions"><button class="button-run" data-run="quality" type="button">▶ Изпълни анализа</button><button class="button-code" data-code-toggle="quality" aria-expanded="false" aria-controls="code-quality" type="button"><span>⌘</span> Виж кода</button></div><div class="code-container" id="code-quality" hidden><div class="code-head"><span>api/run.py / quality</span><button type="button" data-copy="quality">Копирай</button></div><pre><code data-code-content="quality">Зареждане на Python кода…</code></pre></div></div>
+          </div>
+        </section>
+        <section class="chapter chapter-anchor" id="chapter-patterns" data-chapter="patterns">
+          <div class="chapter-head"><span class="index">02 <span>/ 06</span></span><div><div class="eyebrow dark">ОПИСАТЕЛЕН АНАЛИЗ</div><h2>Кои сигнали <em>имат значение?</em></h2></div></div>
+          <div class="chapter-body">
+            <div class="chapter-explain"><p class="chapter-lead">Поведението не е еднакво във всички групи. Сравнявам отговорите според лоялност, посещения, поръчки и давност на последната покупка.</p><p>Така установяваме дали данните съдържат практически полезен сигнал, но без да приписваме причинен ефект на отделните характеристики.</p><div class="method-note"><span>ВАЖНО УТОЧНЕНИЕ</span><p>Квартилите са изчислени по рангове. При еднакви стойности двама клиенти могат да бъдат разпределени в съседни групи; това се отбелязва изрично.</p></div></div>
+            <div class="execute-card" data-panel="patterns"><div class="execute-top"><span><i class="python-dot"></i> Python · Chapter 02</span><span class="execution-state" data-state="patterns">Готово за изпълнение</span></div><div class="result-stage" id="result-patterns"><div class="viz-title">Response rate по членство</div><div class="bar-row"><label>Членове</label><div class="bar-track"><i style="width:42.5%"></i></div><strong>42,5%</strong></div><div class="bar-row"><label>Без членство</label><div class="bar-track"><i style="width:25.1%"></i></div><strong>25,1%</strong></div><p class="preview-caption">Наблюдавана разлика от 17,4 процентни пункта, а не доказана причинна връзка.</p></div><div class="execute-actions"><button class="button-run" data-run="patterns" type="button">▶ Изпълни анализа</button><button class="button-code" data-code-toggle="patterns" aria-expanded="false" aria-controls="code-patterns" type="button"><span>⌘</span> Виж кода</button></div><div class="code-container" id="code-patterns" hidden><div class="code-head"><span>api/run.py / patterns</span><button type="button" data-copy="patterns">Копирай</button></div><pre><code data-code-content="patterns">Зареждане…</code></pre></div></div>
+          </div>
+        </section>
+        <section class="chapter chapter-anchor" id="chapter-logistic" data-chapter="logistic">
+          <div class="chapter-head"><span class="index">03 <span>/ 06</span></span><div><div class="eyebrow dark">ПЪРВИ КЛАСИФИКАЦИОНЕН МОДЕЛ</div><h2>Прогнозата, която <em>можем да обясним.</em></h2></div></div>
+          <div class="chapter-body">
+            <div class="chapter-explain"><p class="chapter-lead">Логистичната регресия оценява вероятността <code>P(response = Yes)</code> като функция на клиентското поведение.</p><p>Стандартизирам числовите характеристики само в обучаващата извадка чрез <code>Pipeline</code>. Така не допускам информация от тестовите клиенти да влияе на обучението.</p><div class="method-note"><span>ЗАЩО ТОЗИ МОДЕЛ?</span><p>Той е достатъчно гъвкав за базов бизнес модел и позволява да интерпретираме посоката на отделните зависимости чрез <em>odds ratios</em>.</p></div></div>
+            <div class="execute-card" data-panel="logistic"><div class="execute-top"><span><i class="python-dot"></i> Python · Chapter 03</span><span class="execution-state" data-state="logistic">Готово за изпълнение</span></div><div class="result-stage" id="result-logistic"><div class="model-hero"><div><small>TEST ROC AUC</small><strong>0,774</strong><span>Логистична регресия</span></div><div class="model-circle">LR<span>01</span></div></div><p class="preview-caption">Моделът класира по-успешно от случайно предположение. Тестът е с 200 клиента.</p></div><div class="execute-actions"><button class="button-run" data-run="logistic" type="button">▶ Обучи модела</button><button class="button-code" data-code-toggle="logistic" aria-expanded="false" aria-controls="code-logistic" type="button"><span>⌘</span> Виж кода</button></div><div class="code-container" id="code-logistic" hidden><div class="code-head"><span>api/run.py / logistic</span><button type="button" data-copy="logistic">Копирай</button></div><pre><code data-code-content="logistic">Зареждане…</code></pre></div></div>
+          </div>
+        </section>
+        <section class="chapter chapter-anchor" id="chapter-forest" data-chapter="forest">
+          <div class="chapter-head"><span class="index">04 <span>/ 06</span></span><div><div class="eyebrow dark">ВТОРИ КЛАСИФИКАЦИОНЕН МОДЕЛ</div><h2>Какво показва <em>алтернативата?</em></h2></div></div>
+          <div class="chapter-body">
+            <div class="chapter-explain"><p class="chapter-lead">Random Forest обединява множество решаващи дървета и може да улови по-сложни нелинейни зависимости между предикторите.</p><p>Сравнявам го при абсолютно същото разделяне на данните и едни и същи метрики. Това е необходимо за честно сравнение.</p><div class="method-note"><span>ПАРАМЕТРИ</span><p><code>250</code> дървета, максимална дълбочина <code>7</code>, минимален размер на листо <code>5</code>; фиксиран <code>random_state=42</code>.</p></div></div>
+            <div class="execute-card" data-panel="forest"><div class="execute-top"><span><i class="python-dot"></i> Python · Chapter 04</span><span class="execution-state" data-state="forest">Готово за изпълнение</span></div><div class="result-stage" id="result-forest"><div class="model-hero forest-hero"><div><small>TEST ROC AUC</small><strong>0,756</strong><span>Random Forest</span></div><div class="model-circle">RF<span>02</span></div></div><p class="preview-caption">По-сложният алгоритъм не показва съществено по-добро разграничаване върху тестовите данни.</p></div><div class="execute-actions"><button class="button-run" data-run="forest" type="button">▶ Обучи модела</button><button class="button-code" data-code-toggle="forest" aria-expanded="false" aria-controls="code-forest" type="button"><span>⌘</span> Виж кода</button></div><div class="code-container" id="code-forest" hidden><div class="code-head"><span>api/run.py / forest</span><button type="button" data-copy="forest">Копирай</button></div><pre><code data-code-content="forest">Зареждане…</code></pre></div></div>
+          </div>
+        </section>
+        <section class="chapter chapter-anchor" id="chapter-comparison" data-chapter="comparison">
+          <div class="chapter-head"><span class="index">05 <span>/ 06</span></span><div><div class="eyebrow dark">ВАЛИДАЦИЯ</div><h2>По-добрият модел <em>не е само число.</em></h2></div></div>
+          <div class="chapter-body">
+            <div class="chapter-explain"><p class="chapter-lead">Използвам Accuracy, Sensitivity, Specificity, ROC AUC, Brier score и bootstrap интервал за разликата в AUC.</p><p>Логистичната регресия има малко по-висока тестова AUC, но доверителният интервал за разликата включва нула. Затова не твърдя категорично статистическо превъзходство.</p><div class="method-note"><span>УПРАВЛЕНСКИ ИЗБОР</span><p>Предпочитам логистичната регресия заради обяснимостта ѝ, при близки резултати. Това е практическо решение, а не доказателство, че винаги е най-добра.</p></div></div>
+            <div class="execute-card" data-panel="comparison"><div class="execute-top"><span><i class="python-dot"></i> Python · Chapter 05</span><span class="execution-state" data-state="comparison">Готово за изпълнение</span></div><div class="result-stage" id="result-comparison"><div class="compare-preview"><div><small>Logistic</small><strong>0,774</strong></div><span class="versus">vs</span><div><small>Forest</small><strong>0,756</strong></div></div><div class="result-callout">Разлика ≈ 0,018 AUC. Дали е достатъчна? Изпълни bootstrap проверката.</div></div><div class="execute-actions"><button class="button-run" data-run="comparison" type="button">▶ Сравни двата модела</button><button class="button-code" data-code-toggle="comparison" aria-expanded="false" aria-controls="code-comparison" type="button"><span>⌘</span> Виж кода</button></div><div class="code-container" id="code-comparison" hidden><div class="code-head"><span>api/run.py / comparison</span><button type="button" data-copy="comparison">Копирай</button></div><pre><code data-code-content="comparison">Зареждане…</code></pre></div></div>
+          </div>
+        </section>
+        <section class="chapter chapter-anchor" id="chapter-targeting" data-chapter="targeting">
+          <div class="chapter-head"><span class="index">06 <span>/ 06</span></span><div><div class="eyebrow dark">МАРКЕТИНГОВО РЕШЕНИЕ</div><h2>Избираме <em>не всички.</em><br>Избираме по-добре.</h2></div></div>
+          <div class="chapter-body">
+            <div class="chapter-explain"><p class="chapter-lead">Подреждам тестовите клиенти според прогнозната вероятност за положителен отговор и изследвам как се променят резултатите при различен обхват на кампанията.</p><p>Избирам <strong>топ 30%</strong> като работен сценарий: 60 контакта в тестовата извадка, 37 положителни отговора и 61,7% response rate спрямо 33% за всички.</p><div class="method-note"><span>ГРАНИЦА НА ИЗВОДА</span><p>Това е ретроспективен lift, не доказана допълнителна печалба. Реалното внедряване изисква марж, цена на контакт, допустимост за комуникация и контролна група.</p></div></div>
+            <div class="execute-card" data-panel="targeting"><div class="execute-top"><span><i class="python-dot"></i> Python · Chapter 06</span><span class="execution-state" data-state="targeting">Готово за изпълнение</span></div><div class="result-stage" id="result-targeting"><div class="simulator"><div class="sim-heading"><label for="target-range">Размер на целевата група</label><strong id="target-value">30%</strong></div><input type="range" id="target-range" min="10" max="50" value="30" step="10"><div class="scale"><span>10%</span><span>20%</span><span>30%</span><span>40%</span><span>50%</span></div><div class="sim-metrics"><div><small>Клиенти</small><strong id="target-contacts">60</strong></div><div><small>Response rate</small><strong id="target-rate">61,7%</strong></div><div><small>Lift</small><strong id="target-lift">1,87×</strong></div></div><div class="sim-foot"><span>Положителни отговори</span><b id="target-hits">37 от 66</b></div></div><p class="preview-caption" id="target-caption">Първоначални стойности от проверената тестова извадка. Стартирай Python за повторно изчисление.</p></div><div class="execute-actions"><button class="button-run" data-run="targeting" type="button">▶ Пресметни сценариите</button><button class="button-code" data-code-toggle="targeting" aria-expanded="false" aria-controls="code-targeting" type="button"><span>⌘</span> Виж кода</button></div><div class="code-container" id="code-targeting" hidden><div class="code-head"><span>api/run.py / targeting</span><button type="button" data-copy="targeting">Копирай</button></div><pre><code data-code-content="targeting">Зареждане…</code></pre></div></div>
+          </div>
+        </section>
+      </div>
     </div>
-  </section>
-  <section id="method" class="section">
-    <div class="section-heading"><div><div class="eyebrow dark">05 / Интерпретация</div><h2>Какво можем да заключим?</h2></div><div class="section-sub">Професионалният анализ е прозрачен и за своите ограничения.</div></div>
-    <div class="grid-thirds">
-      <article class="card"><div class="eyebrow dark">01 — Association</div><h3 style="margin-top:13px">Свързани характеристики</h3><p>Активност, поръчки, скорошна покупка и лоялност са свързани с вероятността за исторически положителен отговор. Не доказваме причинност.</p></article>
-      <article class="card"><div class="eyebrow dark">02 — Model selection</div><h3 style="margin-top:13px">Обяснимо решение</h3><p>Логистичната регресия е прагматичният избор. Разликата с Random Forest в тестовата AUC не доказва категорично превъзходство.</p></article>
-      <article class="card"><div class="eyebrow dark">03 — Validation</div><h3 style="margin-top:13px">Пилотно тестване</h3><p>Нужни са нови, времево коректни данни, проверки за допустим контакт и рандомизиран контролен тест, преди да говорим за допълнителен ефект.</p></article>
-    </div>
-    <p class="footnote" style="margin-top:23px">Важни ограничения: липсват времеви маркери на характеристиките, реална цена на контакт и причинно-следствена идентификация. Проектът е образователно изследване, а не автоматизирана система за изпращане на оферти.</p>
-  </section>
-</main>
-<footer class="footer"><div class="shell footerline"><div><b>ShopDirect / Research Lab</b><br>Курсова работа P3.1 · Илияна Цанова · 252042</div><div>Данни от преподавателя · Без публикувани клиентски записи · 2026</div></div></footer>
-<script>
-(function () {
-"use strict";
-const reference = [
- {share:.2, clients:40, positives:31, rate:.775, lift:2.3484848485, capture:31/66},
- {share:.3, clients:60, positives:37, rate:37/60, lift:(37/60)/.33, capture:37/66},
- {share:.4, clients:80, positives:44, rate:.55, lift:.55/.33, capture:44/66}
-];
-let scenarios = reference, selectedRows = null;
-const el = id => document.getElementById(id);
-const fmt = (n,d=1) => (100*n).toLocaleString("bg-BG",{minimumFractionDigits:d,maximumFractionDigits:d})+"%";
-const fixed = (n,d=3) => Number(n).toLocaleString("bg-BG",{minimumFractionDigits:d,maximumFractionDigits:d});
-const share = el("share");
-function renderTargeting() {
- const current = Number(share.value)/100;
- const closest = scenarios.find(x=>Math.abs(x.share-current)<.001);
- if (!closest) return;
- el("share-value").textContent=Math.round(current*100)+"%";
- el("sim-selected").textContent=closest.clients;
- el("sim-rate").textContent=fmt(closest.rate);
- el("sim-lift").textContent=fixed(closest.lift,2)+"×";
- el("sim-capture").textContent=fmt(closest.capture);
- el("scenario-rows").innerHTML=scenarios.map(x=>"<tr class='"+(x.share===current?"active":"")+"'><td>"+Math.round(100*x.share)+"%</td><td>"+x.clients+"</td><td>"+x.positives+"</td><td>"+fmt(x.rate)+"</td><td>"+fixed(x.lift,2)+"×</td></tr>").join("");
-}
-share.addEventListener("input",renderTargeting);
-renderTargeting();
-function parseCsv(source) {
- const text=source.replace(/^\uFEFF/,"").replace(/\r\n/g,"\n");
- const cells=[]; let row=[],field="",quoted=false;
- for(let i=0;i<text.length;i++){const c=text[i];
-  if(c==='"'){if(quoted&&text[i+1]==='"'){field+='"';i++}else quoted=!quoted}
-  else if(c===","&&!quoted){row.push(field);field=""}
-  else if(c==="\n"&&!quoted){row.push(field);cells.push(row);row=[];field=""}
-  else field+=c;
- }
- if(quoted)throw Error("Незатворени кавички в CSV.");
- if(field||row.length){row.push(field);cells.push(row)}
- const columns=cells.shift().map(x=>x.trim());
- const needed=["customer_id","website_visits_30d","orders_12m","avg_order_value_eur","recency_days","email_engagement","promotion_affinity","loyalty_member","response"];
- for(const col of needed)if(!columns.includes(col))throw Error("Липсва колона: "+col);
- const result=cells.filter(row=>row.some(c=>c.trim())).map((row,index)=>{
-  if(row.length!==columns.length)throw Error("Невалиден CSV ред "+(index+2));
-  const item={};needed.forEach(key=>item[key]=row[columns.indexOf(key)].trim());return item;
- });
- if(result.length<100||result.length>2000)throw Error("Изискват се от 100 до 2000 клиента.");
- return result;
-}
-function reportStatus(message,type) {el("upload-status").className="status"+(type?" "+type:"");el("upload-status").textContent=message;}
-el("csv-file").addEventListener("change",async function(){
- selectedRows=null;el("run-btn").disabled=true;
- const file=this.files&&this.files[0];if(!file)return;
- try{
-  if(file.size>950000)throw Error("CSV файлът надхвърля 950 KB.");
-  const text=await file.text();const rows=parseCsv(text);
-  const buffer=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(text));
-  const hash=Array.from(new Uint8Array(buffer)).map(b=>b.toString(16).padStart(2,"0")).join("").slice(0,16);
-  selectedRows=rows;el("filename").textContent=file.name;
-  reportStatus("Заредени "+rows.length+" реда · SHA-256: "+hash+"… · Данните не са изпращани. Готово за Python.");
-  el("run-btn").disabled=false;
- }catch(err){reportStatus(err.message,"error")}
-});
-function svgROC(models){
- const svg=el("roc-chart"),width=500,height=260;
- const p=[52,22,22,35], sx=x=>p[0]+x*(width-p[0]-p[2]), sy=y=>height-p[3]-y*(height-p[1]-p[3]);
- const lines=[["logistic","#168575"],["forest","#d3aa61"]];
- const path=coords=>coords.map((xy,i)=>(i?"L":"M")+sx(xy[0]).toFixed(2)+","+sy(xy[1]).toFixed(2)).join(" ");
- svg.innerHTML='<rect x="0" y="0" width="500" height="260" fill="#fff"/>'+
- '<line x1="'+sx(0)+'" y1="'+sy(0)+'" x2="'+sx(1)+'" y2="'+sy(1)+'" stroke="#b2bdc1" stroke-dasharray="6 5" stroke-width="1.5"/>'+
- '<line x1="'+sx(0)+'" y1="'+sy(0)+'" x2="'+sx(0)+'" y2="'+sy(1)+'" stroke="#798b93"/>'+
- '<line x1="'+sx(0)+'" y1="'+sy(0)+'" x2="'+sx(1)+'" y2="'+sy(0)+'" stroke="#798b93"/>'+
- lines.map(pair=>'<path d="'+path(models[pair[0]].roc)+'" fill="none" stroke="'+pair[1]+'" stroke-width="3" />').join("")+
- '<text x="52" y="253" font-size="11" fill="#647781">0</text><text x="470" y="253" font-size="11" fill="#647781">1</text><text x="32" y="27" font-size="11" fill="#647781">1</text>'+
- '<text x="250" y="256" font-size="11" text-anchor="middle" fill="#647781">False Positive Rate</text>'+
- '<text x="15" y="127" font-size="11" text-anchor="middle" transform="rotate(-90 15 127)" fill="#647781">True Positive Rate</text>';
- el("roc-placeholder").classList.add("hide");svg.classList.remove("hide");
-}
-el("run-btn").addEventListener("click",async function(){
- if(!selectedRows)return;this.disabled=true;
- reportStatus("Изчисляват се двата модела с действителния Python backend…","running");
- try{
-  const response=await fetch("/api/run",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({rows:selectedRows}),cache:"no-store"});
-  const result=await response.json();if(!response.ok)throw Error(result.error||"API грешка "+response.status);
-  scenarios=result.scenarios;
-  share.min=10;share.max=50;share.value=30;el("share-min").textContent="10%";el("share-max").textContent="50%";
-  renderTargeting();
-  el("stat-n").textContent=result.sample.n;
-  el("stat-response").textContent=fmt(result.sample.positive/result.sample.n,0);
-  el("stat-auc").textContent=fixed(result.models.logistic.test_auc);
-  el("log-auc").textContent=fixed(result.models.logistic.test_auc);
-  el("forest-auc").textContent=fixed(result.models.forest.test_auc);
-  el("log-auc-bar").style.width=(result.models.logistic.test_auc*100)+"%";
-  el("forest-auc-bar").style.width=(result.models.forest.test_auc*100)+"%";
-  const yes=result.loyalty.Yes, no=result.loyalty.No;
-  if(yes&&no){el("loyal-yes").textContent=fmt(yes.rate);el("loyal-no").textContent=fmt(no.rate);el("loyal-yes-bar").style.width=(yes.rate*100)+"%";el("loyal-no-bar").style.width=(no.rate*100)+"%"}
-  svgROC(result.models);
-  el("runtime-result").classList.remove("hide");
-  el("runtime-result").textContent="Python изпълнен успешно · "+result.sample.n+" клиента · "+result.settings.split+" · CV "+result.settings.cv+" · sklearn "+result.settings.sklearn+" · "+result.elapsed_seconds+" s.";
-  reportStatus("Успешно преизчислено от качения CSV. Модели, ROC криви и сценарии са обновени.");
- }catch(err){reportStatus("Грешка при изпълнение: "+err.message,"error")}
- finally{this.disabled=false}
-});
-})();
-</script>
+
+    <section class="conclusion chapter-anchor" id="final">
+      <div class="wrap">
+        <div class="section-meta"><span>07 / ИЗВОДИ И ПРЕПОРЪКИ</span><span>ОТ АНАЛИЗ КЪМ ДЕЙСТВИЕ</span></div>
+        <div class="conclusion-grid">
+          <div><span class="marker marker-light">Основно заключение</span><h2 class="display">По-малко<br>контакти.<br><em>По-целенасочен избор.</em></h2></div>
+          <div class="conclusion-side"><p>Предлагам логистичната регресия като прозрачен и практически приложим модел за ранжиране на допустимите за контакт клиенти, като пилотната кампания започне с топ 30%.</p><div class="strategy-list"><div><span>01</span><p>Проверяваме съгласията и допустимостта за маркетингов контакт.</p></div><div><span>02</span><p>Изчисляваме прогнозните вероятности върху актуални данни.</p></div><div><span>03</span><p>Тестваме предложението с контролна група и реални разходи.</p></div></div></div>
+        </div>
+        <div class="final-cta">
+          <div><div class="eyebrow">Академичен проект · P3.1</div><h3>Цялото изследване.<br><em>На едно място.</em></h3><p>Прочети непрекъснатата версия на курсовата, разгледай изходния код или изпълни шестте глави последователно.</p></div>
+          <div class="final-actions"><a class="btn btn-lime" href="/report.html">Прочети пълния доклад <span>↗</span></a><button class="btn btn-dark-outline" type="button" id="final-run-all">▶ Изпълни всички глави</button><a class="inline-code-link" href="/presentation.html">Виж онлайн презентацията от 8 слайда ↗</a><a class="inline-code-link" href="https://github.com/Egeorgievbg/ShopDirect/blob/main/P3_1_252042_Analysis.ipynb" target="_blank" rel="noopener noreferrer">Отвори изпълнения Python Notebook ↗</a><a class="inline-code-link" href="https://github.com/Egeorgievbg/ShopDirect" target="_blank" rel="noopener noreferrer">GitHub: прегледай целия код ↗</a></div>
+        </div>
+        <div class="complete-status" id="complete-status" aria-live="polite" hidden></div>
+      </div>
+    </section>
+    <section class="sources-section" id="sources"><div class="wrap sources-grid"><div><div class="eyebrow dark">ПРОЗРАЧНОСТ</div><h2>Какво е важно<br>да знаете.</h2></div><div><p><strong>Източник на данни:</strong> учебният CSV за казус ShopDirect, предоставен от преподавателя. Кодът и наборът данни са в GitHub хранилището на проекта.</p><p><strong>Ограничения:</strong> няма времеви маркери за всички предиктори, няма реални разходи за кампанията и няма рандомизирано сравнение, което да доказва инкрементален ефект.</p><p><strong>Методи:</strong> scikit-learn: <a href="https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression" target="_blank" rel="noopener noreferrer">Logistic Regression</a>, <a href="https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees" target="_blank" rel="noopener noreferrer">Random Forest</a>, <a href="https://scikit-learn.org/stable/modules/cross_validation.html" target="_blank" rel="noopener noreferrer">Cross-validation</a>, <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" target="_blank" rel="noopener noreferrer">ROC AUC</a>.</p></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-row"><a href="#cover" class="footer-logo">shopdirect<span>.</span>lab</a><p>Курсова работа P3.1 · Илияна Цанова · фак. № 252042</p><a href="#cover" class="footer-back">Към началото ↑</a></div></footer>
+  <div id="toast" role="status" class="toast" aria-live="polite" hidden></div>
 </body>
 </html>

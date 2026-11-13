@@ -1,16 +1,20 @@
-# No instructor-owned raw datasets in this repository
-*.csv
+# User-specific data and credentials
 *.xlsx
 *.xls
 *.parquet
 *.pkl
 *.joblib
+*.csv
+!data/
+!data/P3_1_campaign_response.csv
+
 .env
 .env.*
 !.env.example
-.vercel
+.vercel/
 __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
+.venv/
 node_modules/
 dist/
