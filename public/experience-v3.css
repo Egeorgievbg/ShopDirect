@@ -160,3 +160,14 @@
  .chapter .execute-card{max-height:none!important}
  .chapter .execute-card .result-stage{overflow:visible!important}
 }
+
+/* Infinite floating motion is on CSS compositor; GSAP controls entrance and scroll opacity. */
+@keyframes ambientFloatA{0%,100%{transform:translate3d(0,0,0) rotate(-3deg)}50%{transform:translate3d(11px,-16px,0) rotate(4deg)}}
+@keyframes ambientFloatB{0%,100%{transform:translate3d(0,0,0) rotate(3deg)}50%{transform:translate3d(-13px,12px,0) rotate(-4deg)}}
+.cover .float-python,.cover .float-campus,.cover .float-university,.cover .float-analytics{animation:ambientFloatA 6.2s ease-in-out infinite}
+.cover .float-vscode,.cover .float-editor,.cover .float-seal{animation:ambientFloatB 7.4s ease-in-out infinite}
+.cover .float-vscode{animation-delay:-2s}.cover .float-analytics{animation-delay:-3.1s}
+.cover .float-editor{animation-delay:-4s}.cover .float-campus{animation-delay:-1s}
+.cover .float-seal{animation-delay:-3.5s}
+.chapter .execute-card{background-image:radial-gradient(370px circle at var(--glow-x,75%) var(--glow-y,10%),#8b5cff11,transparent 65%),linear-gradient(155deg,#221439f0,#150c27fa)}
+@media(prefers-reduced-motion:reduce){.cover .float-asset{animation:none!important}}
