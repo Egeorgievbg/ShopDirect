@@ -66,15 +66,10 @@ function animateStats(){
 
 function motionAssets(){
  if(reduced()||!g)return;
- const assets=$$(".cover .float-asset");
- assets.forEach((el,i)=>{
-  g.fromTo(el,{autoAlpha:0,scale:.72,rotate:-17},
-   {autoAlpha:1,scale:1,rotate:0,duration:.85,delay:.8+(i*.11),ease:"back.out(1.5)",clearProps:"transform"});
- });
+ // Floating hero icons have one coordinated scroll owner in hero-depth.js.
+ // Do not animate their transforms/opacity here: competing GSAP tweens cause jumps.
  if(window.ScrollTrigger){
   g.registerPlugin(window.ScrollTrigger);
-  g.to(assets,{opacity:0,stagger:.025,ease:"none",
-   scrollTrigger:{trigger:"#cover",start:"55% top",end:"bottom bottom",scrub:1}});
   const ambient=$$(".research-orbit");
   ambient.forEach((blob,i)=>{
    g.to(blob,{yPercent:i%2===0?60:-50,xPercent:i%2===0?30:-30,ease:"none",
