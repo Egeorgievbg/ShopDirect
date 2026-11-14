@@ -1,0 +1,82 @@
+[
+  {
+    "slide": 1,
+    "title": "Въведение",
+    "original_filename": "1.mp3",
+    "audio_filename": "slide-01.mp3",
+    "caption_filename": "slide-01.vtt",
+    "duration_seconds": 24.189,
+    "bytes": 404617,
+    "caption_basis": "inline user-provided speech transcript (approximate timing)"
+  },
+  {
+    "slide": 2,
+    "title": "Маркетингов проблем",
+    "original_filename": "при ограничен маркетингов бюджет.mp3",
+    "audio_filename": "slide-02.mp3",
+    "caption_filename": "slide-02.vtt",
+    "duration_seconds": 22.753,
+    "bytes": 381629,
+    "caption_basis": "inline user-provided speech transcript (approximate timing)"
+  },
+  {
+    "slide": 3,
+    "title": "Клиентски данни",
+    "original_filename": "2.mp3",
+    "audio_filename": "slide-03.mp3",
+    "caption_filename": "slide-03.vtt",
+    "duration_seconds": 19.148,
+    "bytes": 323951,
+    "caption_basis": "editorial speaker notes (content may differ; approximate timing)"
+  },
+  {
+    "slide": 4,
+    "title": "Ключови зависимости",
+    "original_filename": "3.mp3",
+    "audio_filename": "slide-04.mp3",
+    "caption_filename": "slide-04.vtt",
+    "duration_seconds": 22.596,
+    "bytes": 379121,
+    "caption_basis": "editorial speaker notes (content may differ; approximate timing)"
+  },
+  {
+    "slide": 5,
+    "title": "Прогнозни модели",
+    "original_filename": "4.mp3",
+    "audio_filename": "slide-05.mp3",
+    "caption_filename": "slide-05.vtt",
+    "duration_seconds": 20.924,
+    "bytes": 352372,
+    "caption_basis": "editorial speaker notes (content may differ; approximate timing)"
+  },
+  {
+    "slide": 6,
+    "title": "Сравнение на моделите",
+    "original_filename": "5.mp3",
+    "audio_filename": "slide-06.mp3",
+    "caption_filename": "slide-06.vtt",
+    "duration_seconds": 26.828,
+    "bytes": 446831,
+    "caption_basis": "editorial speaker notes (content may differ; approximate timing)"
+  },
+  {
+    "slide": 7,
+    "title": "Таргетиране",
+    "original_filename": "6.mp3",
+    "audio_filename": "slide-07.mp3",
+    "caption_filename": "slide-07.vtt",
+    "duration_seconds": 24.607,
+    "bytes": 411304,
+    "caption_basis": "inline user-provided speech transcript (approximate timing)"
+  },
+  {
+    "slide": 8,
+    "title": "Изводи и препоръки",
+    "original_filename": "7.mp3",
+    "audio_filename": "slide-08.mp3",
+    "caption_filename": "slide-08.vtt",
+    "duration_seconds": 24.111,
+    "bytes": 403363,
+    "caption_basis": "inline user-provided speech transcript (approximate timing)"
+  }
+]
