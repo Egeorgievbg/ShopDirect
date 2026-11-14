@@ -93,7 +93,7 @@
       ]
     },
     {
-      "source": "/visuals/(.*)",
+      "source": "/visuals/background-(.*)",
       "headers": [
         {
           "key": "Cache-Control",
