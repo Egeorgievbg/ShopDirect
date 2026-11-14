@@ -16,7 +16,7 @@ const activeIndex=()=>{let n=parseInt(location.hash.slice(1),10);return Number.i
 function cancel(){seq++;clearTimeout(timer);timer=0;media.pause();media.onended=null;media.onerror=null;media.ontimeupdate=null;if(canSpeak)try{synth.cancel()}catch(_){};utterance=null;if(vttAbort)vttAbort.abort();vttAbort=null}
 function next(){if(index===7){playing=false;render();return}document.querySelectorAll(".dock-step")[index+1]?.click()}
 function schedule(ms,id){clearTimeout(timer);timer=setTimeout(()=>{if(seq===id&&playing&&auto&&!document.hidden)next()},ms)}
-const chunks=text=>text.match(/[^.!?;:]+[.!?;:]?/g)?.map(s=>s.trim()).filter(Boolean)||[text];
+const chunks=text=>{const sentences=text.match(/[^.!?;:]+[.!?;:]?/g)||[text];const result=[];for(const sentence of sentences){const words=sentence.trim().split(/\s+/);for(let i=0;i<words.length;i+=6)result.push(words.slice(i,i+6).join(" "))}return result.filter(Boolean)};
 function estimated(text,duration){const phrases=chunks(text);const weights=phrases.map(s=>Math.max(1,s.length));const total=weights.reduce((a,b)=>a+b,0);let pos=0;return phrases.map((t,i)=>{const start=pos;pos+=duration*weights[i]/total;return {start,end:pos,text:t}})}
 function parseVtt(str){const out=[];const stamp=s=>{const p=s.trim().split(":").map(Number);return p.length===3?p[0]*3600+p[1]*60+p[2]:p[0]*60+p[1]};for(const block of str.replace(/\r/g,"").split(/\n\s*\n/)){const l=block.trim().split("\n");const at=l.findIndex(s=>s.includes("-->"));if(at<0)continue;const times=l[at].split("-->");const start=stamp(times[0]),end=stamp(times[1]);if(Number.isFinite(start)&&Number.isFinite(end)&&end>start)out.push({start,end,text:l.slice(at+1).join(" ").replace(/<[^>]+>/g,"")})}return out}
 function setCaption(text){const el=$("#scene-caption");if(el)el.textContent=text}
@@ -33,7 +33,7 @@ async function play(){
  const id=seq;const i=index;const source="/audio/slide-"+pad(i)+".mp3";
  try{
   const exists=await fetch(source,{method:"HEAD",cache:"no-store"});
-  if(exists.ok&&seq===id){
+  if(exists.ok&&(/audio\\/|mpeg|mp3|octet-stream/i.test(exists.headers.get("content-type")||""))&&seq===id){
    media.src=source;media.playbackRate=rate;media.muted=muted;mode="audio";render();
    await new Promise((resolve,reject)=>{if(media.readyState>=1)return resolve();media.onloadedmetadata=resolve;media.onerror=reject;setTimeout(()=>reject(new Error("audio timeout")),4500)});
    if(seq!==id)return;
