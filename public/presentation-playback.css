@@ -19,3 +19,12 @@
 @media(max-width:850px){.playback-rate-label,.playback-status{display:none}.playback-controls{gap:5px;padding:0 5px}.footer.cinema-dock{gap:7px}}
 @media(max-width:540px){.playback-repeat,.playback-rate{display:none}.playback-controls{gap:4px}.playback-btn{width:36px!important;height:36px!important;min-width:36px}.dock-content{gap:6px!important}.dock-label{font-size:9px}.dock-step{height:5px}}
 @media print{.slide::before{opacity:0!important;filter:none!important}.playback-controls{display:none!important}}
+
+/* Captions float above the dock, with protected safe area and strong contrast. */
+.scene-captions{position:fixed;z-index:28;bottom:clamp(102px,14svh,154px);left:50%;transform:translateX(-50%);pointer-events:none;width:min(880px,calc(100% - 32px));display:flex;justify-content:center;text-align:center}
+.scene-captions[hidden]{display:none!important}
+.scene-caption{display:inline-block;max-width:100%;padding:11px 20px;border:1px solid #cfb3ff55;border-radius:15px;background:#0b0714d9;box-shadow:0 8px 36px #05020a80;backdrop-filter:blur(16px);font:700 clamp(14px,1.65vw,22px)/1.5 Montserrat,Arial,sans-serif;color:#fff;overflow-wrap:anywhere;text-wrap:balance}
+.scene-caption:empty{display:none}
+#caption-toggle{font:900 11px Montserrat,sans-serif!important;letter-spacing:.06em}
+@media(max-width:620px){.scene-captions{bottom:97px;width:calc(100% - 26px)}.scene-caption{padding:8px 12px;font-size:13px;line-height:1.45}.playback-controls{border-right:0}}
+@media print{.scene-captions{display:none!important}}
