@@ -1,0 +1,117 @@
+/* ShopDirect · Homepage alignment and performance patch (loaded last).
+   Keep actual portrait colors, no parent filters or animation transform collisions. */
+:root{--home-header:82px}
+.site-header{background:rgba(11,7,20,.94);border-bottom:1px solid #b48aff35}
+.nav-wrap{gap:clamp(12px,1.7vw,26px)}
+.nav-center{gap:clamp(11px,1.3vw,22px);font-size:clamp(10px,.83vw,13px)}
+.nav-center a{transition:color .18s ease}
+.nav-pill{white-space:nowrap}
+.cover .cover-art{isolation:isolate;filter:none!important;animation:none!important;transform:none!important}
+.cover .cover-art .cover-portrait{
+ left:50%!important;right:auto!important;
+ translate:-50% 0!important;
+ top:clamp(10px,3.8vh,45px)!important;bottom:auto!important;
+ width:min(115%,700px)!important;max-width:none!important;
+ height:auto!important;max-height:min(81svh,790px)!important;
+ object-fit:contain!important;object-position:center top!important;
+ filter:drop-shadow(0 25px 50px #0a0315a0)!important;
+ pointer-events:none;
+}
+/* Orbit graphic and the portrait have the same central horizontal axis. */
+.cover .cover-art .orbit-illustration{
+ left:50%!important;right:auto!important;translate:-50% 0!important;
+ top:8%!important;width:min(110%,690px)!important;
+ max-width:none!important;opacity:.22!important;
+ filter:drop-shadow(0 8px 32px #9c65ff33)!important;
+}
+.cover .hero-orbit-assets{
+ display:block!important;visibility:visible!important;
+ position:absolute!important;inset:0!important;overflow:visible!important;
+ pointer-events:none;z-index:8!important;
+}
+.cover .float-shell{
+ position:absolute!important;display:block!important;visibility:visible!important;
+ width:var(--float-w,102px)!important;min-width:0;
+ max-width:none;overflow:visible;pointer-events:none;
+ filter:drop-shadow(0 12px 20px #080216a8) drop-shadow(0 0 14px #a979ff35);
+}
+.cover .float-shell .float-asset{
+ display:block!important;width:100%!important;height:auto!important;
+ object-fit:contain;opacity:1!important;
+}
+.cover .float-shell.float-python{--float-w:clamp(89px,7.8vw,132px);top:12%;right:1%;left:auto;bottom:auto}
+.cover .float-shell.float-vscode{--float-w:clamp(83px,7vw,115px);top:22%;left:-3%;right:auto;bottom:auto}
+.cover .float-shell.float-analytics{--float-w:clamp(112px,9.8vw,157px);bottom:22%;right:-6%;left:auto;top:auto}
+.cover .float-shell.float-editor{--float-w:clamp(100px,8.7vw,137px);bottom:23%;left:-7%;right:auto;top:auto}
+.cover .float-shell.float-seal{--float-w:clamp(70px,5.5vw,90px);top:3%;left:48%;right:auto;bottom:auto}
+/* Keep floating assets in side margins, never above heading or CTAs. */
+.cover .cover-copy{position:relative;z-index:10}
+.cover .cover-bottom{z-index:12}
+/* Header: avoid overlapping brand and action at medium widths. */
+@media(min-width:941px) and (max-width:1340px){
+ .header-academy .academy-copy{display:none}
+ .nav-wrap{width:calc(100% - 34px)}
+ .nav-center{gap:13px}
+ .nav-right{gap:9px}
+ .cover .cover-art .cover-portrait{width:min(121%,650px)!important}
+}
+@media(min-width:681px) and (max-width:940px){
+ .cover .cover-art .cover-portrait{width:min(145%,580px)!important}
+ .cover .float-shell.float-python{--float-w:95px;right:-6%}
+ .cover .float-shell.float-vscode{--float-w:87px;left:-12%;top:22%}
+ .cover .float-shell.float-analytics{--float-w:115px;right:-7%;bottom:37%}
+ .cover .float-shell.float-editor{--float-w:95px;left:-13%;bottom:37%}
+ .cover .float-shell.float-seal{--float-w:65px;left:43%}
+ .cover .cover-art .orbit-illustration{width:140%!important}
+}
+@media(max-width:680px){
+ :root{--home-header:68px}
+ .cover .cover-layout{position:relative}
+ .cover .cover-art{right:0!important;left:0!important;width:100%!important;top:33%!important;height:67%!important;opacity:1!important;z-index:3}
+ .cover .cover-art .cover-portrait{
+  left:50%!important;right:auto!important;translate:-50% 0!important;
+  top:0!important;width:min(92vw,440px)!important;
+  max-height:58svh!important;
+ }
+ .cover .cover-art .orbit-illustration{left:50%!important;width:min(93vw,460px)!important;top:1%!important}
+ .cover .float-shell.float-python{--float-w:clamp(61px,17vw,87px);right:1%;top:11%}
+ .cover .float-shell.float-vscode{--float-w:clamp(55px,15vw,75px);left:0;top:22%;display:block!important}
+ .cover .float-shell.float-analytics{--float-w:clamp(77px,22vw,109px);right:0;bottom:20%}
+ .cover .float-shell.float-editor{--float-w:clamp(66px,18vw,91px);left:0;bottom:24%}
+ .cover .float-shell.float-seal{--float-w:clamp(48px,13vw,67px);left:45%;top:4%}
+ .cover .cover-copy{z-index:10}
+ .cover .cover-copy h1{font-size:clamp(46px,11.5vw,73px)}
+ .cover .cover-lede{max-width:91%}
+ .cover .cover-bottom{z-index:12}
+ .site-header{height:68px}
+ .mobile-nav{top:68px}
+ .nav-wrap{width:calc(100% - 28px);gap:8px}
+ .logo-text{font-size:13px}
+ .header-academy{display:none}
+ .nav-right{gap:7px}
+ .nav-pill{max-width:min(50vw,185px);font-size:10px}
+}
+@media(max-width:390px){
+ .cover .cover-art{top:38%!important;height:60%!important}
+ .cover .cover-art .cover-portrait{max-height:53svh!important}
+ .cover .float-shell.float-python{--float-w:60px;right:2%}
+ .cover .float-shell.float-vscode{--float-w:52px;left:0;top:22%}
+ .cover .float-shell.float-analytics{--float-w:71px;right:0}
+ .cover .float-shell.float-editor{--float-w:65px;left:0}
+ .cover .float-shell.float-seal{--float-w:45px;left:45%}
+ .nav-pill{font-size:9px;padding:8px}
+}
+@media(prefers-reduced-motion:reduce){
+ .cover .float-shell{opacity:1!important;transform:none!important;will-change:auto!important}
+ .cover .float-shell .float-asset{animation:none!important;transform:none!important}
+ .cover .cover-art .cover-portrait{transform:none!important}
+}
+/* Defer painting deep chapter decorations until they enter the viewport. */
+@supports(content-visibility:auto){
+ .intro-section,.research-intro,.chapter,.conclusion,.sources-section{content-visibility:auto;contain-intrinsic-size:auto 760px}
+}
+@media print{
+ .cover .hero-orbit-assets{display:none!important}
+ .cover .cover-art .cover-portrait{translate:0 0!important;left:auto!important;right:-30px!important;max-height:440px!important}
+ .intro-section,.research-intro,.chapter,.conclusion,.sources-section{content-visibility:visible;contain-intrinsic-size:none}
+}
