@@ -53,22 +53,26 @@ function statCard(label,value){
 function buildDecision(){
  const host=$("#viz-decision");if(!host)return;
  head(host,"01 / BUSINESS QUESTION","СХЕМА НА РЕШЕНИЕТО");
- const svg=svgFrame(890,220,"Път от цялата аудитория през оценка на вероятността до приоритетни контакти");
- const defs=make("defs");
- const grad=make("linearGradient",{id:"decisionGlow",x1:"0",x2:"1"});grad.append(make("stop",{offset:"0%", "stop-color":"#754fff"}),make("stop",{offset:"100%","stop-color":"#d1aaff"}));defs.append(grad);svg.append(defs);
- const boxes=[{x:17,n:"01",title:"ВСИЧКИ КЛИЕНТИ",sub:"Исторически данни",fill:"#402363"},{x:317,n:"02",title:"МОДЕЛ",sub:"Вероятност за отговор",fill:"#61379b"},{x:617,n:"03",title:"ПРИОРИТЕТ",sub:"Избрана аудитория",fill:"#824dd8"}];
- boxes.forEach((b,i)=>{
-  const rect=make("rect",{x:b.x,y:41,width:253,height:134,rx:17,fill:b.fill,"fill-opacity":".68",stroke:"#c39aff","stroke-opacity":".47"});
-  svg.append(rect);text(svg,b.x+18,72,b.n,12,"#c7a5ff",800);
-  text(svg,b.x+18,109,b.title,15,"#f9f2ff",800);text(svg,b.x+18,135,b.sub,12,"#e1cfef",500);
-  if(i<2){path(svg,"M"+(b.x+258)+" 108 H"+(b.x+291),"#d2b0ff",3);path(svg,"M"+(b.x+283)+" 101 L"+(b.x+291)+" 108 L"+(b.x+283)+" 115","#d2b0ff",3)}
+ const stages=[
+  {number:"01",name:"Клиентска аудитория",detail:"Налични исторически данни",kind:"audience"},
+  {number:"02",name:"Прогнозен модел",detail:"Вероятност за положителен отговор",kind:"model"},
+  {number:"03",name:"Приоритетна група",detail:"Ред за контакт в пилотната кампания",kind:"priority"}
+ ];
+ const flow=document.createElement("div");flow.className="viz-decision-flow";
+ flow.setAttribute("role","list");flow.setAttribute("aria-label","Три етапа на маркетинговото решение");
+ stages.forEach((stage,i)=>{
+  const el=document.createElement("article");el.className="viz-decision-node viz-decision-"+stage.kind;
+  el.setAttribute("role","listitem");
+  const num=document.createElement("span");num.className="viz-decision-index";num.textContent=stage.number;
+  const title=document.createElement("strong");title.className="viz-decision-heading";title.textContent=stage.name;
+  const sub=document.createElement("p");sub.className="viz-decision-detail";sub.textContent=stage.detail;
+  el.append(num,title,sub);flow.append(el);
+  if(i<stages.length-1){
+   const connector=document.createElement("span");connector.className="viz-decision-connector";connector.setAttribute("aria-hidden","true");connector.textContent="→";flow.append(connector);
+  }
  });
- for(let i=0;i<24;i++){
-  const x=45+i%6*27,y=149-Math.floor(i/6)*4;
-  circle(svg,x,y,3.3,i%3===0?"#d7b8ff":"#a27acb",{opacity:".88"});
- }
- host.append(svg);
- foot(host,"Концептуална схема. Тя представя маркетинговото решение, без да приписва прогнози на конкретни клиенти.");
+ host.append(flow);
+ foot(host,"Концептуална схема на приоритизирането. Не се приписват индивидуални прогнози на конкретни клиенти.");
 }
 function buildMatrix(){
  const host=$("#viz-customer-matrix");if(!host)return;
