@@ -7,7 +7,7 @@
   if(!g||!ST||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   g.registerPlugin(ST);
   const cover=$("#cover"),stage=$(".cover-stage"),photo=$(".cover-portrait");
-  if(cover&&stage&&photo){
+  if(cover&&stage&&photo&&window.matchMedia("(min-width:681px)").matches){
     g.set(photo,{opacity:1});
     // An independently timed entrance: her full-color figure rises into view.
     g.fromTo(photo,{y:105,opacity:0,scale:.965},
@@ -35,7 +35,7 @@
       scrollTrigger:{trigger:el,start:"top 91%",once:true}});
   }
   const feature=$(".presenting-feature");
-  if(feature){
+  if(feature&&window.matchMedia("(min-width:681px)").matches){
    g.fromTo(".presenting-feature-copy > *",
      {autoAlpha:0,y:28,filter:"blur(4px)"},
      {autoAlpha:1,y:0,filter:"blur(0px)",duration:.7,stagger:.12,ease:"power3.out",
