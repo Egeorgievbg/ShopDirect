@@ -26,7 +26,13 @@ async function getCues(i,duration,id){
  try{const resp=await fetch("/audio/slide-"+pad(i)+".vtt",{signal:ctl.signal,cache:"no-store"});if(resp.ok){const cues=parseVtt(await resp.text());if(cues.length&&seq===id)return cues}}catch(_){}
  return estimated(note(i),duration)
 }
-function render(){const p=$("#playback-toggle"),a=$("#playback-audio"),s=$("#playback-status");if(p){p.textContent=playing?"⏸":"▶";p.title=playing?"Пауза":"Възпроизвеждане";p.setAttribute("aria-pressed",String(playing))}if(a){a.textContent=muted?"🔇":"🔊";a.title=muted?"Включи звука":"Изключи звука";a.setAttribute("aria-pressed",String(!muted))}if(s)s.textContent=playing?(mode==="audio"?"Запис на Илияна":mode==="tts"?"Браузърен глас":mode==="silent"?"Само субтитри":"Autoplay"):"Пауза"}
+const mediaIcons={
+ play:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z" fill="currentColor" stroke="none"/></svg>',
+ pause:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg>',
+ volume:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5a10 10 0 0 1 0 14"/></svg>',
+ mute:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m16 9 5 6m0-6-5 6"/></svg>'
+};
+function render(){const p=$("#playback-toggle"),a=$("#playback-audio"),s=$("#playback-status");if(p){p.innerHTML=playing?mediaIcons.pause:mediaIcons.play;p.title=playing?"Пауза":"Възпроизвеждане";p.setAttribute("aria-label",p.title);p.setAttribute("aria-pressed",String(playing))}if(a){a.innerHTML=muted?mediaIcons.mute:mediaIcons.volume;a.title=muted?"Включи звука":"Изключи звука";a.setAttribute("aria-label",a.title);a.setAttribute("aria-pressed",String(!muted))}if(s)s.textContent=playing?(mode==="audio"?"Запис на Илияна":mode==="tts"?"Браузърен глас":mode==="silent"?"Само субтитри":"Autoplay"):"Пауза"}
 async function play(){
  cancel();setCaption("");render();
  if(!started||!playing||!auto||document.hidden)return;
