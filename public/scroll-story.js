@@ -6,26 +6,9 @@
   const g=window.gsap,ST=window.ScrollTrigger;
   if(!g||!ST||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   g.registerPlugin(ST);
-  const cover=$("#cover"),stage=$(".cover-stage"),photo=$(".cover-portrait");
-  if(cover&&stage&&photo&&window.matchMedia("(min-width:681px)").matches){
-    g.set(photo,{opacity:1});
-    // An independently timed entrance: her full-color figure rises into view.
-    g.fromTo(photo,{y:105,opacity:0,scale:.965},
-      {y:0,opacity:1,scale:1,duration:1.5,delay:.55,ease:"power3.out",
-       clearProps:"scale"});
-    // The stage is sticky through an additional ~one viewport of scrolling.
-    // First the lower body appears; only near the end does the figure move away.
-    const scroll=g.timeline({defaults:{ease:"none"},scrollTrigger:{
-      trigger:cover,start:"top top+=0",end:"bottom bottom",scrub:.85,
-      invalidateOnRefresh:true
-    }});
-    scroll
-      .to(photo,{yPercent:-61,duration:.75},0)
-      .to(photo,{yPercent:-110,autoAlpha:0,duration:.25},.75)
-      .to(".cover .float-chip",{yPercent:-68,autoAlpha:0,duration:.22,stagger:.03},.78)
-      .to(".cover .cover-copy",{y:-80,autoAlpha:0,duration:.28},.72)
-      .to(".cover .orbit-illustration",{yPercent:-18,autoAlpha:0,duration:.32},.68);
-  }
+  // The desktop hero uses a stable two-track CSS Grid instead of a pinned
+  // portrait scroll timeline. This prevents transforms from colliding with
+  // its copy, art and navigation at different viewport sizes.
 
   // More expressive typographic choreography (short, readable and not distracting).
   for(const el of $$(".intro-section .display,.research-intro h2,.chapter-head h2,.conclusion .display,.presenting-feature h3")){
