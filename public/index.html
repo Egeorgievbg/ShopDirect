@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="/experience-v3.css">
   <link rel="stylesheet" href="/hero-depth.css">
   <link rel="stylesheet" href="/experience-v4.css">
+  <link rel="stylesheet" href="/home-fixes.css">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
   <script src="/premium.js" defer></script>
@@ -90,7 +92,7 @@
           </div>
         </div>
         <div class="cover-art" aria-hidden="true">
-          <img class="cover-portrait" src="/visuals/optimized/iliyana-confident.png" width="1086" height="1448" alt="" fetchpriority="high" decoding="async">
+          <img class="cover-portrait" src="/visuals/optimized/iliyana-confident.png" width="1086" height="1448" alt="" fetchpriority="high" loading="eager" decoding="async">
           <svg viewBox="0 0 630 620" class="orbit-illustration">
             <defs>
               <radialGradient id="orbfill"><stop offset="0" stop-color="#d9f1b0" stop-opacity=".21"/><stop offset="1" stop-color="#d9f1b0" stop-opacity="0"/></radialGradient>
@@ -111,11 +113,11 @@
             <circle cx="526" cy="280" r="7" fill="#d8ff93"/><circle cx="526" cy="280" r="19" stroke="#d8ff93" fill="none" opacity=".4"/>
           </svg>
           <div class="hero-orbit-assets" aria-hidden="true">
-            <span class="float-shell float-python"><img class="float-asset" src="/visuals/floating/python.png" width="128" height="128" loading="lazy" decoding="async" alt=""></span>
-            <span class="float-shell float-vscode"><img class="float-asset" src="/visuals/floating/vscode.png" width="137" height="128" loading="lazy" decoding="async" alt=""></span>
-            <span class="float-shell float-analytics"><img class="float-asset" src="/visuals/floating/analytics.png" width="175" height="115" loading="lazy" decoding="async" alt=""></span>
-            <span class="float-shell float-editor"><img class="float-asset" src="/visuals/floating/code-editor.png" width="145" height="105" loading="lazy" decoding="async" alt=""></span>
-            <span class="float-shell float-seal"><img class="float-asset" src="/visuals/floating/academy-seal.png" width="102" height="106" loading="lazy" decoding="async" alt=""></span>
+            <span class="float-shell float-python"><img class="float-asset" src="/visuals/floating/python.png" width="128" height="128" loading="eager" decoding="async" alt=""></span>
+            <span class="float-shell float-vscode"><img class="float-asset" src="/visuals/floating/vscode.png" width="137" height="128" loading="eager" decoding="async" alt=""></span>
+            <span class="float-shell float-analytics"><img class="float-asset" src="/visuals/floating/analytics.png" width="175" height="115" loading="eager" decoding="async" alt=""></span>
+            <span class="float-shell float-editor"><img class="float-asset" src="/visuals/floating/code-editor.png" width="145" height="105" loading="eager" decoding="async" alt=""></span>
+            <span class="float-shell float-seal"><img class="float-asset" src="/visuals/floating/academy-seal.png" width="102" height="106" loading="eager" decoding="async" alt=""></span>
           </div>
           <div class="orbit-caption"><span class="live-pulse"></span> Python / scikit-learn · 2 модела</div>
         </div>
