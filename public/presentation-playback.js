@@ -37,11 +37,13 @@ async function play(){
    media.src=source;media.playbackRate=rate;media.muted=muted;mode="audio";render();
    await new Promise((resolve,reject)=>{if(media.readyState>=1)return resolve();media.onloadedmetadata=resolve;media.onerror=reject;setTimeout(()=>reject(new Error("audio timeout")),4500)});
    if(seq!==id)return;
-   captionItems=await getCues(i,media.duration||fallbackDuration(i),id);
-   if(seq!==id)return;
+   captionItems=estimated(note(i),media.duration||fallbackDuration(i));
    media.ontimeupdate=()=>{if(seq===id)displayAt(media.currentTime)};
    media.onended=()=>{if(seq===id){setCaption("");schedule(1000,id)}};
-   await media.play();return;
+   // Start audio synchronously after metadata, never block playback on a VTT network fetch.
+   const playback=media.play();
+   getCues(i,media.duration||fallbackDuration(i),id).then(cues=>{if(seq===id)captionItems=cues});
+   await playback;return;
   }
  }catch(_){media.pause()}
  if(seq!==id)return;
