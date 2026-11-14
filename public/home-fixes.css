@@ -228,3 +228,66 @@
  .cover .cover-bottom{width:calc(100% - 28px)!important}
  .presenting-feature .presenting-feature-copy{padding:20px 18px 24px!important}
 }
+
+
+/* MOBILE HERO V3 — editorial portrait as a subtle right-side backdrop.
+   Strong foreground readability; only two peripheral symbols remain. */
+@media(max-width:680px){
+ .cover .cover-layout{position:relative!important;isolation:isolate;padding-bottom:18px!important}
+ .cover .cover-copy{position:relative!important;z-index:8!important}
+ .cover .cover-copy h1,.cover .cover-lede{position:relative;z-index:9}
+ .cover .hero-academy,.cover .cover-actions{position:relative;z-index:10}
+ .cover .cover-art{
+   position:absolute!important;inset:auto!important;
+   top:clamp(118px,31vw,190px)!important;
+   right:-13%!important;left:auto!important;bottom:auto!important;
+   width:min(83vw,430px)!important;
+   height:clamp(390px,118vw,560px)!important;
+   margin:0!important;z-index:1!important;
+   pointer-events:none!important;overflow:visible!important;
+   opacity:1!important;
+ }
+ .cover .cover-art .cover-portrait{
+   position:absolute!important;top:0!important;bottom:auto!important;
+   right:-3%!important;left:auto!important;translate:none!important;
+   width:100%!important;max-width:100%!important;height:100%!important;
+   max-height:none!important;object-fit:contain!important;object-position:top right!important;
+   opacity:.45!important;
+   -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 35%,#000 100%);
+   mask-image:linear-gradient(90deg,transparent 0%,#000 35%,#000 100%);
+   filter:drop-shadow(0 12px 35px #0d041d8c)!important;
+ }
+ .cover .cover-art .orbit-illustration{opacity:.075!important;top:0!important;left:60%!important;width:110%!important}
+ .cover .hero-orbit-assets{inset:0!important;z-index:2!important}
+ .cover .float-shell.float-vscode,.cover .float-shell.float-editor,.cover .float-shell.float-seal{
+   display:none!important;
+ }
+ .cover .float-shell.float-python{
+   display:block!important;--float-w:clamp(58px,15vw,81px);
+   top:9%!important;right:0!important;left:auto!important;bottom:auto!important;
+   opacity:.67!important;
+ }
+ .cover .float-shell.float-analytics{
+   display:block!important;--float-w:clamp(72px,18vw,98px);
+   top:auto!important;right:-1%!important;bottom:13%!important;left:auto!important;
+   opacity:.54!important;
+ }
+ .cover .float-shell .float-asset{animation-duration:10s!important;filter:none!important}
+ .cover .hero-academy{
+   background:rgba(27,13,49,.94)!important;backdrop-filter:blur(12px);
+ }
+ .cover .cover-actions .btn{
+   position:relative;z-index:11;backdrop-filter:blur(12px);
+ }
+ .cover .cover-actions .btn-outline-light{background:rgba(22,10,43,.76)!important}
+ .cover .cover-bottom{position:relative!important;z-index:12!important}
+}
+@media(max-width:385px){
+ .cover .cover-art{
+   top:155px!important;right:-18%!important;width:88vw!important;height:435px!important;
+ }
+ .cover .cover-art .cover-portrait{opacity:.39!important}
+}
+@media(prefers-reduced-motion:reduce) and (max-width:680px){
+ .cover .float-shell .float-asset{animation:none!important}
+}
