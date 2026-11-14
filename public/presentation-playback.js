@@ -64,7 +64,7 @@ function controls(){
  const dock=$(".cinema-dock .dock-right");if(!dock)return;
  const wrapper=document.createElement("div");wrapper.className="playback-controls";
  wrapper.innerHTML='<button type="button" class="playback-btn" id="playback-toggle" aria-label="Пауза">⏸</button><button type="button" class="playback-btn" id="playback-audio" aria-label="Изключи звука">🔊</button><button type="button" class="playback-btn playback-repeat" id="playback-repeat" aria-label="Повтори">↻</button><label class="playback-rate-label" for="playback-rate">Скорост</label><select id="playback-rate" class="playback-rate" aria-label="Скорост"><option value=".85">0.85×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option></select><button type="button" class="playback-btn" id="caption-toggle" aria-label="Скрий субтитрите" aria-pressed="true">CC</button><span class="playback-status" id="playback-status" role="status"></span>';
- dock.insertBefore(wrapper,$("#next"));
+ dock.parentElement.append(wrapper);
  const captions=document.createElement("div");captions.className="scene-captions";captions.id="scene-captions";captions.setAttribute("aria-live","off");captions.innerHTML='<span class="scene-caption" id="scene-caption"></span>';document.body.append(captions);
  $("#playback-toggle").onclick=()=>{started=true;playing=!playing;if(playing)play();else{cancel();render()}};
  $("#playback-audio").onclick=()=>{started=true;muted=!muted;playing=true;play()};
