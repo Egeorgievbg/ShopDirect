@@ -18,6 +18,10 @@ function animateOrbit(){
  const hero=$("#cover");
  const shells=$$(".cover .float-shell");
  if(!shells.length)return;
+ if(window.matchMedia("(max-width:680px)").matches){
+   shells.forEach(x=>{x.style.opacity="1";x.style.transform="none"});
+   return;
+ }
  if(!gs||reduced()){
    shells.forEach(x=>x.style.opacity="0.8");
    return;
