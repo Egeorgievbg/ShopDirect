@@ -1,5 +1,5 @@
 /* ShopDirect · cinematic 8-scene academic defense.
-   No voiceover, ElevenLabs, MP3, external state or paid services.
+   Original locally hosted MP3 narration is managed separately by presentation-playback.js.
    Real scientific graphics remain independently computed by presentation-infographics.js. */
 (()=>{"use strict";
 const $=(query,root=document)=>root.querySelector(query);
@@ -100,7 +100,7 @@ function installIntro(){
  '<button id="intro-close" class="intro-close" type="button" aria-label="Затвори инструкциите">×</button>'+
  '<div class="intro-eyebrow">SHOPDIRECT · DEFENSE EXPERIENCE / 2026</div>'+
  '<h2 id="intro-heading">От данни<br><em>към решение.</em></h2>'+
- '<p>Интерактивна академична защита на Илияна Цанова. Осем последователни сцени с реални резултати от Python, визуални анализи и маркетингови изводи.</p>'+
+ '<p>Интерактивна академична защита на Илияна Цанова с осем слайда, визуални анализи и оригинални аудиозаписи с нейния глас. Натиснете „Започни“, за да разрешите звука в браузъра.</p>'+
  '<div class="intro-grid">'+
  '<article><kbd>←</kbd><kbd>→</kbd><strong>Навигация</strong><span>Сменяй слайдовете с клавиатура, стрелките или долната лента.</span></article>'+
  '<article><kbd>F</kbd><strong>Пълен екран</strong><span>Включи презентационен режим. Излез с Esc.</span></article>'+
@@ -108,7 +108,7 @@ function installIntro(){
  '</div>'+
  '<p><strong>Интерактивни демонстрации:</strong> на слайд 6 изчисли реалните ROC криви, а на слайд 7 сравни сценариите за таргетиране от 10% до 50%. На телефон плъзни хоризонтално върху празно пространство, за да смениш слайда.</p>'+
  '<div class="intro-actions"><label class="intro-check"><input id="intro-remember" type="checkbox" checked> Не показвай отново автоматично</label>'+
- '<button id="intro-start" class="intro-primary" type="button">Започни презентацията →</button></div>'+
+ '<button id="intro-start" class="intro-primary" type="button">▶ Започни с гласа на Илияна</button></div>'+
  '</div>';
  document.body.append(overlay);
  $id("intro-start").addEventListener("click",closeIntro);
