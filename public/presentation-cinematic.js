@@ -161,6 +161,7 @@ function closeIntro(reason="gesture"){
  window.dispatchEvent(new CustomEvent("shopdirect:introclosed",{
   detail:{reason,wasWelcome}
  }));
+ if(wasWelcome)requestAnimationFrame(()=>{animateEnter();if(!reduced)floatAnimate()});
 }
 function toggleNotes(){
  notesOpen=!notesOpen;
