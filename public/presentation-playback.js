@@ -93,6 +93,7 @@
    play.title = running ? "Пауза" : "Пусни гласа на Илияна";
    play.setAttribute("aria-label", play.title);
    play.setAttribute("aria-pressed", String(running));
+   document.body.classList.toggle("narration-playing", running);
   }
   if (volume) {
    volume.innerHTML = muted ? icons.mute : icons.volume;
@@ -272,6 +273,14 @@
    // Directly reached from navigation clicks or from the previous audio's end.
    // Keep the same unlocked HTMLAudioElement for uninterrupted narration.
    if (wantsPlayback && ($("#cinema-intro")?.hidden ?? true)) startPlayback(false);
+  });
+  // Welcome animation advances automatically after 2.65 seconds. Attempt
+  // autoplay immediately; if the browser denies sound, reveal one explicit
+  // unlock button instead of silently suppressing the voice.
+  window.addEventListener("shopdirect:introclosed", event => {
+   if (event.detail?.reason === "auto" && wantsPlayback && audio.paused) {
+    startPlayback(false);
+   }
   });
 
   // The cinematic intro is installed BEFORE this script. Both handlers fire
