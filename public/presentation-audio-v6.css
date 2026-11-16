@@ -1,0 +1,38 @@
+/* ShopDirect narration reliability UI · V6, loaded last. */
+.voice-start-prompt {
+ position:fixed;z-index:42;left:50%;bottom:calc(107px + env(safe-area-inset-bottom));
+ transform:translateX(-50%);
+ display:flex;align-items:center;justify-content:space-between;gap:14px;
+ width:min(640px,calc(100% - 32px));padding:11px 13px 11px 18px;
+ border:1px solid rgba(207,174,253,.66);border-radius:17px;
+ background:linear-gradient(120deg,rgba(38,18,67,.98),rgba(20,11,39,.98));
+ color:#f8efff;box-shadow:0 15px 50px #04010bcb;
+ font:600 clamp(12px,1.2vw,15px)/1.5 Montserrat,Arial,sans-serif;
+ backdrop-filter:blur(16px);
+}
+.voice-start-prompt[hidden]{display:none!important}
+.voice-start-prompt span{min-width:0;flex:1}
+#voice-start-now{
+ flex:none;border:1px solid #d6b4ff;border-radius:11px;
+ min-height:44px;padding:10px 15px;
+ background:linear-gradient(135deg,#8654e6,#ad78f7);color:white;
+ font:800 12px Montserrat,Arial,sans-serif;
+ cursor:pointer;box-shadow:0 5px 17px rgba(142,89,236,.25);
+}
+#voice-start-now:hover{background:linear-gradient(135deg,#955cef,#bb85ff)}
+#voice-start-now:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:1000px){
+ .voice-start-prompt{bottom:calc(133px + env(safe-area-inset-bottom))}
+}
+@media(max-width:620px){
+ .voice-start-prompt{
+  bottom:calc(130px + env(safe-area-inset-bottom));padding:10px 11px 10px 13px;
+  gap:8px;border-radius:14px;
+ }
+ #voice-start-now{font-size:11px;padding:9px 10px;white-space:nowrap}
+}
+@media(max-width:370px){
+ .voice-start-prompt{flex-direction:column;align-items:stretch;text-align:center}
+ #voice-start-now{width:100%}
+}
+@media print{.voice-start-prompt{display:none!important}}
