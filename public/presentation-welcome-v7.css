@@ -367,6 +367,21 @@ body{background:var(--s7-night);overflow-x:clip}
  .cinema-intro .welcome-stats{margin-top:16px!important}
  .cinema-intro .welcome-actions{margin-top:16px!important}
 }
+/* Subtle feedback: the deck is alive only while real MP3 narration plays. */
+body.narration-playing .footer.cinema-dock #playback-toggle{
+ box-shadow:0 0 0 1px rgba(212,174,255,.48),0 0 24px rgba(161,105,250,.43)!important;
+ animation:w7Playing 3.4s ease-in-out infinite;
+}
+body.narration-playing .cinema-top-progress #cinema-top-fill{
+ box-shadow:0 0 16px rgba(170,116,255,.70);
+}
+@keyframes w7Playing{
+ 0%,100%{filter:brightness(1)}
+ 50%{filter:brightness(1.15)}
+}
+@media(prefers-reduced-motion:reduce){
+ body.narration-playing .footer.cinema-dock #playback-toggle{animation:none!important}
+}
 /* Accessibility & performance */
 .cinema-intro .welcome-panel :focus-visible{outline:3px solid #f5eaff!important;outline-offset:4px!important}
 @media(prefers-reduced-motion:reduce){
