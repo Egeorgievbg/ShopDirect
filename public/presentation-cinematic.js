@@ -9,7 +9,7 @@ const sceneNames=["Въведение","Маркетингов проблем","
 const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const background=(i)=>"/visuals/background-"+String(i+1).padStart(2,"0")+".png";
 const floating=(i)=>"/visuals/floating-"+String(i+1).padStart(2,"0")+".png";
-let index=0,notesOpen=false,introOpen=false,lastFocused=null,floatTween=null,touchStart=null,dragFrame=0,pointerX=0,pointerY=0;
+let index=0,notesOpen=false,introOpen=false,lastFocused=null,floatTween=null,touchStart=null,dragFrame=0,pointerX=0,pointerY=0,welcomeTimer=0;
 const $id=(id)=>document.getElementById(id);
 const clamp=(x,min,max)=>Math.max(min,Math.min(max,x));
 const labelIndex=(n)=>String(n+1).padStart(2,"0");
@@ -96,44 +96,71 @@ function installIntro(){
  overlay.setAttribute("aria-modal","true");
  overlay.setAttribute("aria-labelledby","intro-heading");
  overlay.innerHTML=
- '<div class="intro-panel">'+
- '<button id="intro-close" class="intro-close" type="button" aria-label="Затвори инструкциите">×</button>'+
- '<div class="intro-eyebrow">SHOPDIRECT · DEFENSE EXPERIENCE / 2026</div>'+
- '<h2 id="intro-heading">От данни<br><em>към решение.</em></h2>'+
- '<p>Интерактивна академична защита на Илияна Цанова с осем слайда, визуални анализи и оригинални аудиозаписи с нейния глас. Натиснете „Започни“, за да разрешите звука в браузъра.</p>'+
- '<div class="intro-grid">'+
- '<article><kbd>←</kbd><kbd>→</kbd><strong>Навигация</strong><span>Сменяй слайдовете с клавиатура, стрелките или долната лента.</span></article>'+
- '<article><kbd>F</kbd><strong>Пълен екран</strong><span>Включи презентационен режим. Излез с Esc.</span></article>'+
- '<article><kbd>?</kbd><strong>Помощ</strong><span>Отвори тези инструкции отново. N — бележки за представяне.</span></article>'+
+ '<div class="intro-panel welcome-panel">'+
+ '<div class="welcome-orbit welcome-orbit-one" aria-hidden="true"></div>'+
+ '<div class="welcome-orbit welcome-orbit-two" aria-hidden="true"></div>'+
+ '<div class="welcome-spark welcome-spark-a" aria-hidden="true"></div>'+
+ '<div class="welcome-spark welcome-spark-b" aria-hidden="true"></div>'+
+ '<div class="welcome-spark welcome-spark-c" aria-hidden="true"></div>'+
+ '<button id="intro-close" class="intro-close" type="button" aria-label="Пропусни анимацията">×</button>'+
+ '<div class="welcome-copy">'+
+ '<div class="welcome-brand"><img src="/academy-seal.svg" width="39" height="39" alt="" decoding="async"><span>СТОПАНСКА АКАДЕМИЯ „Д. А. ЦЕНОВ“<small>КУРСОВА РАБОТА · P3.1 / 2026</small></span></div>'+
+ '<div class="intro-eyebrow"><i class="welcome-dot"></i> SHOPDIRECT / RESEARCH PRESENTATION</div>'+
+ '<h2 id="intro-heading"><span>От данни.</span><br><em>Към решение.</em></h2>'+
+ '<p class="welcome-description">Маркетингов анализ, прогнозни модели и практическо решение. Представено от <strong>Илияна Цанова</strong> с нейния оригинален глас.</p>'+
+ '<div class="welcome-stats" aria-label="Статистика на разработката">'+
+ '<div><strong>800</strong><span>клиента</span></div>'+
+ '<div><strong>02</strong><span>модела</span></div>'+
+ '<div><strong>08</strong><span>слайда</span></div>'+
  '</div>'+
- '<p><strong>Интерактивни демонстрации:</strong> на слайд 6 изчисли реалните ROC криви, а на слайд 7 сравни сценариите за таргетиране от 10% до 50%. На телефон плъзни хоризонтално върху празно пространство, за да смениш слайда.</p>'+
- '<div class="intro-actions"><label class="intro-check"><input id="intro-remember" type="checkbox" checked> Не показвай отново автоматично</label>'+
- '<button id="intro-start" class="intro-primary" type="button">▶ Започни с гласа на Илияна</button></div>'+
+ '<div class="welcome-actions"><button id="intro-start" class="intro-primary" type="button"><span class="welcome-play-icon" aria-hidden="true">▶</span> Започни с гласа на Илияна</button><p class="welcome-auto" id="welcome-auto"><i></i> Автоматично начало след краткото въведение</p></div>'+
+ '</div>'+
+ '<div class="welcome-art" aria-hidden="true">'+
+ '<div class="welcome-halo"></div>'+
+ '<img class="welcome-portrait" src="/visuals/optimized/iliyana-confident.png" width="1086" height="1448" loading="eager" decoding="async" alt="">'+
+ '<div class="welcome-float welcome-float-data"><span>01 / DATA</span><strong>33,0%</strong><small>положителен отговор</small></div>'+
+ '<div class="welcome-float welcome-float-model"><span>02 / MODELS</span><strong>ROC AUC</strong><small>0,774 · 0,756</small></div>'+
+ '</div>'+
+ '<div class="welcome-progress" aria-hidden="true"><span></span></div>'+
  '</div>';
  document.body.append(overlay);
- $id("intro-start").addEventListener("click",closeIntro);
- $id("intro-close").addEventListener("click",closeIntro);
- overlay.addEventListener("pointerdown",e=>{if(e.target===overlay)closeIntro()});
- let skip=false;try{skip=localStorage.getItem("shopdirect-intro-seen-v2")==="1"}catch(_){}
- if(!skip)openIntro();
+ $id("intro-start").addEventListener("click",()=>closeIntro("gesture"));
+ $id("intro-close").addEventListener("click",()=>closeIntro("gesture"));
+ overlay.addEventListener("pointerdown",e=>{if(e.target===overlay)closeIntro("gesture")});
+ const hash=Number(location.hash.slice(1));
+ if(!(Number.isInteger(hash)&&hash>1&&hash<=slides.length))openIntro(true);
 }
-function openIntro(){
+function openIntro(isWelcome=false){
  if(introOpen)return;
+ clearTimeout(welcomeTimer);
  introOpen=true;
  lastFocused=document.activeElement;
  const el=$id("cinema-intro");
  el.hidden=false;
+ el.dataset.mode=isWelcome?"welcome":"help";
  document.body.classList.add("intro-open");
- $id("intro-start").focus();
+ const label=$id("welcome-auto");
+ if(label)label.hidden=!isWelcome;
+ // The welcome is automatic and never traps first-time visitors.
+ if(isWelcome){
+  welcomeTimer=setTimeout(()=>closeIntro("auto"),window.matchMedia("(prefers-reduced-motion: reduce)").matches?650:2650);
+ }else{
+  $id("intro-start").focus();
+ }
 }
-function closeIntro(){
+function closeIntro(reason="gesture"){
  if(!introOpen)return;
+ clearTimeout(welcomeTimer);
+ const wasWelcome=$id("cinema-intro").dataset.mode==="welcome";
  introOpen=false;
  $id("cinema-intro").hidden=true;
  document.body.classList.remove("intro-open");
- try{localStorage.setItem("shopdirect-intro-seen-v2",$id("intro-remember").checked?"1":"0")}catch(_){}
- if(lastFocused&&lastFocused.isConnected&&lastFocused.focus)lastFocused.focus();
- else $id("next")?.focus();
+ if(reason!=="auto"&&lastFocused?.isConnected&&lastFocused.focus)lastFocused.focus();
+ // The narration module can attempt audible autoplay after the welcome finishes.
+ // On a trusted click it independently calls audio.play() inside that click.
+ window.dispatchEvent(new CustomEvent("shopdirect:introclosed",{
+  detail:{reason,wasWelcome}
+ }));
 }
 function toggleNotes(){
  notesOpen=!notesOpen;
